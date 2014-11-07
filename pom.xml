@@ -22,6 +22,8 @@
 	</prerequisites>
 
 	<properties>
+		<sonar-maven-plugin.version>2.4</sonar-maven-plugin.version>
+
 		<arthus-microservice-starters.version>0.0.1-SNAPSHOT</arthus-microservice-starters.version>
 		<axon.version>2.3.2</axon.version>
 		<eureka.version>1.1.135</eureka.version>
@@ -101,6 +103,16 @@
 	</dependencyManagement>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${sonar-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
