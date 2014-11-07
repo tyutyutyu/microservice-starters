@@ -16,7 +16,6 @@
 		<dependency>
 			<groupId>hu.arthus</groupId>
 			<artifactId>arthus-microservice-autoconfigure</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
