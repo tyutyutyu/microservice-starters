@@ -1,0 +1,7 @@
+arthus:
+    messaging:
+        exchangeName: arthus.exchange
+
+#eureka:
+#    instance:
+#        leaseRenewalIntervalInSeconds: 10
