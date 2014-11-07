@@ -13,9 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>Spring Boot Starters</name>
-	<description>Spring Boot Starters</description>
-	<url>http://projects.spring.io/spring-boot/</url>
+	<name>Arthus Microservice Starters</name>
 
 	<prerequisites>
 		<maven>3.0.2</maven>
@@ -139,10 +137,10 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.codehaus.mojo</groupId> -->
+<!-- 				<artifactId>sonar-maven-plugin</artifactId> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 
