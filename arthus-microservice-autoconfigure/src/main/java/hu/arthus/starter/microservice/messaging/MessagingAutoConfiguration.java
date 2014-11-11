@@ -1,5 +1,8 @@
 package hu.arthus.starter.microservice.messaging;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
+
 import hu.arthus.starter.microservice.messaging.EventClassFinderConfiguration.EventClassFinder;
 
 import javax.annotation.PostConstruct;
@@ -91,7 +94,13 @@ public class MessagingAutoConfiguration {
 		RabbitTemplate template = new RabbitTemplate(connectionFactory);
 		template.setExchange(properties.getExchangeName());
 		template.setQueue(properties.getQueueName());
-		template.setMessageConverter(new Jackson2JsonMessageConverter());
+
+		Jackson2JsonMessageConverter messageConverter = new Jackson2JsonMessageConverter();
+		ObjectMapper jsonObjectMapper = new ObjectMapper();
+		jsonObjectMapper.registerModule(new JodaModule());
+		messageConverter.setJsonObjectMapper(jsonObjectMapper);
+		template.setMessageConverter(messageConverter);
+
 		return template;
 	}
 
