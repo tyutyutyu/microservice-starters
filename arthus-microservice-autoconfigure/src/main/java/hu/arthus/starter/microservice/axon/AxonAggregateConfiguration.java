@@ -11,9 +11,11 @@ import org.axonframework.eventhandling.EventBus;
 import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventstore.EventStore;
+import org.axonframework.eventstore.mongo.MongoEventStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +29,7 @@ import org.springframework.util.ClassUtils;
  * @param <T>
  *            Az aggregate osztálya.
  */
+@ConditionalOnClass({ MongoEventStore.class })
 @Configuration
 @Slf4j
 public class AxonAggregateConfiguration {

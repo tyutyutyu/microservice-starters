@@ -18,9 +18,9 @@ public class EurekaClientProperties {
 	private String serviceUrl;
 
 	/**
-	 * Az alaklmazás neve, ami majd megjelenik az Admin Server-en
+	 * Az alkalmazás neve, ami majd megjelenik az Admin Server-en
 	 */
-	@Value("${eureka.instance.appname}")
+	@Value("${spring.application.name}")
 	private String applicationName;
 
 }

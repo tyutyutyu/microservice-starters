@@ -49,11 +49,12 @@ public class EventClassFinderConfiguration {
 				componentProvider.addIncludeFilter(new AssignableTypeFilter(Object.class));
 
 				Set<String> eventClasses = new HashSet<>();
-				for (BeanDefinition bd : componentProvider.findCandidateComponents("hu.arthus.akk")) {
+				for (BeanDefinition bd : componentProvider.findCandidateComponents("hu.arthus")) {
 
 					log.trace("Found class: {}", bd);
 
 					if (bd.getBeanClassName().endsWith("Event")) {
+						log.debug("Found event class: {}", bd);
 						eventClasses.add(bd.getBeanClassName());
 					}
 				}
@@ -84,7 +85,7 @@ public class EventClassFinderConfiguration {
 				componentProvider.addIncludeFilter(new AssignableTypeFilter(Object.class));
 
 				Set<String> eventClasses = new HashSet<>();
-				for (BeanDefinition bd : componentProvider.findCandidateComponents("hu.arthus.akk")) {
+				for (BeanDefinition bd : componentProvider.findCandidateComponents("hu.arthus")) {
 
 					log.trace("Found class: {}", bd);
 

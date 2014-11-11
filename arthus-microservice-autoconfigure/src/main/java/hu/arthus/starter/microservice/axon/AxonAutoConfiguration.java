@@ -3,6 +3,8 @@ package hu.arthus.starter.microservice.axon;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 
+import hu.arthus.starter.microservice.messaging.MessageService;
+
 import java.net.UnknownHostException;
 
 import javax.annotation.PostConstruct;
@@ -35,31 +37,31 @@ import org.springframework.context.annotation.Import;
 public class AxonAutoConfiguration {
 
 	@PostConstruct
-	public void init() {
+	void init() {
 
 		log.debug("AxonAutoConfiguration loaded.");
 	}
 
 	@Bean
-	public AnnotationEventListenerBeanPostProcessor annotationEventListenerBeanPostProcessor() {
+	AnnotationEventListenerBeanPostProcessor annotationEventListenerBeanPostProcessor() {
 
 		return new AnnotationEventListenerBeanPostProcessor();
 	}
 
 	@Bean
-	public AnnotationCommandHandlerBeanPostProcessor annotationCommandHandlerBeanPostProcessor() {
+	AnnotationCommandHandlerBeanPostProcessor annotationCommandHandlerBeanPostProcessor() {
 
 		return new AnnotationCommandHandlerBeanPostProcessor();
 	}
 
 	@Bean
-	public CommandBus commandBus() {
+	CommandBus commandBus() {
 
 		return new SimpleCommandBus();
 	}
 
 	@Bean
-	public CommandGatewayFactoryBean<DefaultCommandGateway> commandGateway(CommandBus commandBus) {
+	CommandGatewayFactoryBean<DefaultCommandGateway> commandGateway(CommandBus commandBus) {
 
 		final CommandGatewayFactoryBean<DefaultCommandGateway> factoryBean = new CommandGatewayFactoryBean<>();
 		factoryBean.setCommandBus(commandBus);
@@ -68,7 +70,7 @@ public class AxonAutoConfiguration {
 	}
 
 	@Bean
-	public EventStore eventStore() throws UnknownHostException {
+	EventStore eventStore() throws UnknownHostException {
 
 		Mongo client = new MongoClient("localhost");
 		// TODO: FI: databaseName beállítás
@@ -78,9 +80,9 @@ public class AxonAutoConfiguration {
 
 	@Bean
 	@Qualifier("messageListener")
-	public EventBus eventBus(RabbitTemplate rabbitTemplate) {
+	EventBus eventBus(RabbitTemplate rabbitTemplate, MessageService messageService) {
 
-		return new RabbitMQSimpleEventBus(rabbitTemplate);
+		return new RabbitMQSimpleEventBus(rabbitTemplate, messageService);
 	}
 
 }

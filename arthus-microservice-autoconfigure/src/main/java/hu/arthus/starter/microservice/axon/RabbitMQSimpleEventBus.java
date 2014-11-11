@@ -1,5 +1,7 @@
 package hu.arthus.starter.microservice.axon;
 
+import hu.arthus.starter.microservice.messaging.MessageService;
+
 import lombok.extern.slf4j.Slf4j;
 
 import org.axonframework.domain.EventMessage;
@@ -8,7 +10,6 @@ import org.axonframework.eventhandling.SimpleEventBus;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.support.CorrelationData;
 
 /**
  *
@@ -19,9 +20,12 @@ public class RabbitMQSimpleEventBus extends SimpleEventBus implements MessageLis
 
 	private final RabbitTemplate rabbitTemplate;
 
-	public RabbitMQSimpleEventBus(RabbitTemplate rabbitTemplate) {
+	private final MessageService messageService;
+
+	public RabbitMQSimpleEventBus(RabbitTemplate rabbitTemplate, MessageService messageService) {
 
 		this.rabbitTemplate = rabbitTemplate;
+		this.messageService = messageService;
 	}
 
 	@Override
@@ -29,7 +33,7 @@ public class RabbitMQSimpleEventBus extends SimpleEventBus implements MessageLis
 
 		for (EventMessage<?> event : events) {
 			log.debug("[PUBLISH     ] New event is published. [event={}]", event);
-			rabbitTemplate.convertAndSend(event.getPayload().getClass().getCanonicalName(), event.getPayload(), new CorrelationData(event.getIdentifier()));
+			messageService.send(event.getPayload(), event.getIdentifier());
 		}
 	}
 

@@ -6,8 +6,6 @@ import javax.annotation.PostConstruct;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.aopalliance.intercept.MethodInterceptor;
-import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.MessageListener;
@@ -19,8 +17,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.aop.aspectj.TypePatternClassFilter;
-import org.springframework.aop.support.NameMatchMethodPointcutAdvisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -48,9 +44,10 @@ public class MessagingAutoConfiguration {
 	@PostConstruct
 	void init() {
 
+		log.debug("MessagingAutoConfiguration loaded. [properties={}, eventClassFinder={}]", properties, eventClassFinder);
+
 		createBindings();
 
-		log.debug("MessagingAutoConfiguration loaded. [{}]", properties);
 	}
 
 	/**
@@ -98,24 +95,8 @@ public class MessagingAutoConfiguration {
 		return template;
 	}
 
-	// @Bean
-	// MessageListenerAdapter listenerAdapter(EventBus eventBus) {
-	//
-	// return new MessageListenerAdapter(eventBus, "onMessage");
-	// }
-
-	// @Bean
-	// SimpleMessageListenerContainer container(ConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapter) {
-	//
-	// SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
-	// container.setConnectionFactory(connectionFactory);
-	// container.setQueueNames(properties.getQueueName());
-	// container.setMessageListener(listenerAdapter);
-	// return container;
-	// }
-
 	@Bean
-	public SimpleMessageListenerContainer container(ConnectionFactory connectionFactory, @Qualifier("messageListener") MessageListener messageListener) {
+	SimpleMessageListenerContainer container(ConnectionFactory connectionFactory, @Qualifier("messageListener") MessageListener messageListener) {
 
 		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
 		container.setQueueNames(properties.getQueueName());
@@ -124,31 +105,16 @@ public class MessagingAutoConfiguration {
 	}
 
 	@Bean
+	MessageService messageService() {
+
+		return new MessageService();
+	}
+
+	@Bean
 	@ConditionalOnMissingClass(name = "org.axonframework.eventhandling.annotation.EventHandler")
-	public MessageListenerAdapter messageListener(@Qualifier("messageListener") Object delegate) {
+	MessageListenerAdapter messageListener(@Qualifier("messageListener") Object delegate) {
 
 		return new MessageListenerAdapter(delegate, new Jackson2JsonMessageConverter());
 	}
 
-	// TODO: FI: külön configba
-	// @Bean
-	NameMatchMethodPointcutAdvisor matchMethodPointcutAdvisor() {
-
-		NameMatchMethodPointcutAdvisor advisor = new NameMatchMethodPointcutAdvisor();
-		advisor.setClassFilter(new TypePatternClassFilter("org.springframework.amqp.rabbit.core.RabbitTemplate"));
-		advisor.setMappedName("convertAndSend");
-		advisor.setAdvice(new MethodInterceptor() {
-
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public Object invoke(MethodInvocation invocation) throws Throwable {
-
-				log.debug("invocation: {}", invoke(invocation));
-
-				return null;
-			}
-		});
-
-		return advisor;
-	}
 }
