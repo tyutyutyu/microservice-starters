@@ -26,7 +26,7 @@
 		<assertj.version>1.7.0</assertj.version>
 		<axon.version>2.3.2</axon.version>
 		<commons-lang3.version>3.3.2</commons-lang3.version>
-		<eureka.version>1.1.143</eureka.version>
+		<eureka.version>1.1.135</eureka.version>
 		<lombok.version>1.14.8</lombok.version>
 		<usertype.version>2.0.1</usertype.version>
 		<spring-cloud-starter.version>1.0.0.M2</spring-cloud-starter.version>
