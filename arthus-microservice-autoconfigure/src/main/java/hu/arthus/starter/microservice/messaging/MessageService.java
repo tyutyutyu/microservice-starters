@@ -39,6 +39,19 @@ public class MessageService {
 	/**
 	 * Üzenet küldése a RabbitMQ felé
 	 *
+	 * @param event
+	 *            Az üzenet
+	 */
+	public void send(AbstractEvent event) {
+
+		String routingKey = event.getClass().getCanonicalName();
+
+		rabbitTemplate.convertAndSend(routingKey, event, messagePostProcessor, new CorrelationData(event.getId()));
+	}
+
+	/**
+	 * Üzenet küldése a RabbitMQ felé
+	 *
 	 * @param payload
 	 *            Az üzenet
 	 * @param identifier
