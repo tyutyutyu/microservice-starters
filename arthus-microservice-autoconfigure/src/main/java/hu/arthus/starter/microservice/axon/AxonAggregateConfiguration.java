@@ -13,7 +13,6 @@ import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot
 import org.axonframework.eventstore.EventStore;
 import org.axonframework.eventstore.mongo.MongoEventStore;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ApplicationContext;
@@ -25,9 +24,6 @@ import org.springframework.util.ClassUtils;
 /**
  *
  * @author Istvan Foldhazi
- *
- * @param <T>
- *            Az aggregate osztálya.
  */
 @ConditionalOnClass({ MongoEventStore.class })
 @Configuration
@@ -73,24 +69,14 @@ public class AxonAggregateConfiguration {
 		Class<?> clazz = ClassUtils.forName(className, getClass().getClassLoader());
 
 		try {
-			registerBean("commandHandler_" + clazz.getTypeName(), aggregateAnnotationCommandHandler(clazz));
+			String beanName = "commandHandler_" + clazz.getTypeName();
+			Object beanObject = aggregateAnnotationCommandHandler(clazz);
+			log.debug("Registering bean {} with name {}", beanObject, beanName);
+			applicationContext.getAutowireCapableBeanFactory().autowireBean(beanObject);
 		} catch (Exception e) {
 			// TODO: review exception handling
 			log.error("Exception: {}", e);
 		}
-	}
-
-	/**
-	 * Beregisztrál egy osztály példány bean-ként (@Bean)
-	 *
-	 * @param name
-	 * @param bean
-	 */
-	private void registerBean(String name, Object bean) {
-
-		AutowireCapableBeanFactory bf = applicationContext.getAutowireCapableBeanFactory();
-		log.debug("Registering bean {} with name {}", bean, name);
-		bf.autowireBean(bean);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
