@@ -10,7 +10,7 @@
 
 	<artifactId>arthus-microservice-starter-messaging</artifactId>
 
-	<name>Arthus Microservice Axon Starter</name>
+	<name>Arthus Microservice Messaging Starter</name>
 
 	<dependencies>
 		<dependency>
