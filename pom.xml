@@ -159,6 +159,33 @@
 					<artifactId>sonar-maven-plugin</artifactId>
 					<version>${sonar-maven-plugin.version}</version>
 				</plugin>
+
+				<plugin>
+					<groupId>org.projectlombok</groupId>
+					<artifactId>lombok-maven-plugin</artifactId>
+					<version>1.14.8.0</version>
+					<dependencies>
+						<dependency>
+							<groupId>sun.jdk</groupId>
+							<artifactId>tools</artifactId>
+							<version>1.8</version>
+							<scope>system</scope>
+							<systemPath>${java.home}/../lib/tools.jar</systemPath>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>delombok</goal>
+							</goals>
+							<configuration>
+								<addOutputDirectory>true</addOutputDirectory>
+								<sourceDirectory>src/main/java</sourceDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -202,5 +229,15 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<profiles>
+		<profile>
+			<id>sonar</id>
+
+			<properties>
+				<src.dir>target/generated-sources/delombok</src.dir>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
