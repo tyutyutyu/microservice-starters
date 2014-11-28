@@ -20,6 +20,7 @@
 	</prerequisites>
 
 	<properties>
+		<lombok-maven-plugin.version>1.14.8.0</lombok-maven-plugin.version>
 		<sonar-maven-plugin.version>2.4</sonar-maven-plugin.version>
 
 		<arthus-microservice-starters.version>0.0.1-SNAPSHOT</arthus-microservice-starters.version>
@@ -163,7 +164,7 @@
 				<plugin>
 					<groupId>org.projectlombok</groupId>
 					<artifactId>lombok-maven-plugin</artifactId>
-					<version>1.14.8.0</version>
+					<version>${lombok-maven-plugin.version}</version>
 					<dependencies>
 						<dependency>
 							<groupId>sun.jdk</groupId>
@@ -229,5 +230,15 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
+	<profiles>
+		<profile>
+			<id>sonar</id>
+
+			<properties>
+				<src.dir>target/generated-sources/delombok</src.dir>
+			</properties>
+		</profile>
+	</profiles>
+
 </project>
