@@ -10,7 +10,7 @@
 
 	<artifactId>arthus-microservice-autoconfigure</artifactId>
 
-	<name>Arthus Microservicet Autoconfigure</name>
+	<name>Arthus Microservice Autoconfigure</name>
 
 	<ciManagement>
 		<system>bamboo</system>
