@@ -15,7 +15,7 @@ public class UtilConfiguration {
 	/**
 	 * A {@link ConfigurationProperties} osztályoknál szükséges ez a {@link ConversionService} az extra {@link Converter}-ekhez.
 	 *
-	 * @return
+	 * @return A ConversionService
 	 */
 	@Bean(name = ConfigurableApplicationContext.CONVERSION_SERVICE_BEAN_NAME)
 	@SuppressWarnings("static-method")
