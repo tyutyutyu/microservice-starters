@@ -1,4 +1,4 @@
-package hu.arthus.starter.microservice.util;
+package hu.arthus.starter.microservice.common;
 
 import java.util.Date;
 
@@ -6,10 +6,7 @@ import org.joda.time.LocalDate;
 import org.springframework.core.convert.converter.Converter;
 
 /**
- *
  * Wrapper osztály Spring-es konverterekhez.
- *
- * @see org.springframework.data.mongodb.core.convert.MongoConverters
  *
  * @author istvan.foldhazi
  *

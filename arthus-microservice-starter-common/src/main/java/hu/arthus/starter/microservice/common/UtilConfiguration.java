@@ -1,4 +1,4 @@
-package hu.arthus.starter.microservice.util;
+package hu.arthus.starter.microservice.common;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ConfigurableApplicationContext;

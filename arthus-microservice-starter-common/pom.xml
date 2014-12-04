@@ -8,25 +8,27 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>arthus-microservice-starter-admin-client</artifactId>
+	<artifactId>arthus-microservice-starter-common</artifactId>
 
-	<name>Arthus Microservice Admin Client Starter</name>
+	<name>Arthus Microservice Common Starter</name>
 
 	<dependencies>
-		<!-- SPRING CLOUD STARTER -->
+		<!-- SPRING BOOT STARTER -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
-		<!-- ARTHUS MICROSERVICE STARTER -->
 		<dependency>
-			<groupId>hu.arthus</groupId>
-			<artifactId>arthus-microservice-starter-common</artifactId>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
 		</dependency>
+
+		<!-- PROVIDED -->
 		<dependency>
-			<groupId>hu.arthus</groupId>
-			<artifactId>arthus-microservice-autoconfigure</artifactId>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

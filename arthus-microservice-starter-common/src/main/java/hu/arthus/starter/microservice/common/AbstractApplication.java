@@ -1,4 +1,4 @@
-package hu.arthus.starter.microservice.util;
+package hu.arthus.starter.microservice.common;
 
 import java.util.Arrays;
 
@@ -12,6 +12,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
 
+/**
+ * Az alkalmazás indítását segító osztály.
+ *
+ * @author istvan.foldhazi
+ */
 @Slf4j
 @SpringBootApplication
 public abstract class AbstractApplication {
@@ -20,9 +25,8 @@ public abstract class AbstractApplication {
 	private Environment env;
 
 	/**
-	 * <p/>
 	 * Spring profiles can be configured with a program arguments --spring.profiles.active=your-active-profile
-	 * <p/>
+	 *
 	 */
 	@PostConstruct
 	public void postConstruct() {
@@ -35,8 +39,12 @@ public abstract class AbstractApplication {
 	}
 
 	/**
-	 * Main method, used to run the application.
+	 * E függvényen keresztül lehet indítani az alkalmazást.
 	 *
+	 * @param applicationClass
+	 *            Az main metódust tartalmazó osztály típusa. (Általában a hívó osztály.)
+	 * @param args
+	 *            A hívó osztály main függvényének paramétere.
 	 */
 	public static void start(Class<?> applicationClass, String[] args) {
 
