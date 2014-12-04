@@ -4,6 +4,7 @@ import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 
 import hu.arthus.starter.microservice.messaging.MessageService;
+import hu.arthus.starter.microservice.messaging.MessagingProperties;
 
 import java.net.UnknownHostException;
 
@@ -23,6 +24,7 @@ import org.axonframework.eventstore.mongo.DefaultMongoTemplate;
 import org.axonframework.eventstore.mongo.MongoEventStore;
 import org.axonframework.eventstore.mongo.MongoTemplate;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +37,9 @@ import org.springframework.context.annotation.Import;
 @Slf4j
 @SuppressWarnings("static-method")
 public class AxonAutoConfiguration {
+
+	@Autowired
+	private MessagingProperties properties;
 
 	@PostConstruct
 	void init() {

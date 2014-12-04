@@ -69,10 +69,9 @@ public class AxonAggregateConfiguration {
 		Class<?> clazz = ClassUtils.forName(className, getClass().getClassLoader());
 
 		try {
-			String beanName = "commandHandler_" + clazz.getTypeName();
 			Object beanObject = aggregateAnnotationCommandHandler(clazz);
-			log.debug("Registering bean {} with name {}", beanObject, beanName);
 			applicationContext.getAutowireCapableBeanFactory().autowireBean(beanObject);
+			log.debug("CommandHandler registered for {}", clazz.getTypeName());
 		} catch (Exception e) {
 			// TODO: review exception handling
 			log.error("Exception: {}", e);

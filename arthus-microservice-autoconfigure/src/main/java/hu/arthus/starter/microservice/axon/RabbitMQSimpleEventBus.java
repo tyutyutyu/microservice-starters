@@ -9,6 +9,7 @@ import org.axonframework.domain.GenericDomainEventMessage;
 import org.axonframework.eventhandling.SimpleEventBus;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 /**
@@ -39,6 +40,7 @@ public class RabbitMQSimpleEventBus extends SimpleEventBus implements MessageLis
 	}
 
 	@Override
+	@RabbitListener(queues = "${arthus.messaging.queueName}")
 	public void onMessage(Message message) {
 
 		EventMessage<?> event = new GenericDomainEventMessage<>(message.getMessageProperties().getCorrelationId(), 0, rabbitTemplate.getMessageConverter().fromMessage(message));

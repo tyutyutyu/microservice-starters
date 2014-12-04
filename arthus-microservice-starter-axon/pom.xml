@@ -18,6 +18,14 @@
 			<artifactId>arthus-microservice-autoconfigure</artifactId>
 		</dependency>
 
+		<!-- Egy Spring Boot-os hiba miatt kell -->
+		<!-- Caused by: java.lang.IllegalStateException: Failed to introspect annotations: class org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration$$EnhancerBySpringCGLIB$$20b9fb90 -->
+		<!-- Caused by: java.lang.ArrayStoreException: sun.reflect.annotation.TypeNotPresentExceptionProxy -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-mongo</artifactId>

@@ -11,19 +11,17 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.RabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
-import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -89,28 +87,25 @@ public class MessagingAutoConfiguration {
 	}
 
 	@Bean
-	RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-
-		RabbitTemplate template = new RabbitTemplate(connectionFactory);
-		template.setExchange(properties.getExchangeName());
-		template.setQueue(properties.getQueueName());
+	Jackson2JsonMessageConverter messageConverter() {
 
 		Jackson2JsonMessageConverter messageConverter = new Jackson2JsonMessageConverter();
 		ObjectMapper jsonObjectMapper = new ObjectMapper();
 		jsonObjectMapper.registerModule(new JodaModule());
 		messageConverter.setJsonObjectMapper(jsonObjectMapper);
-		template.setMessageConverter(messageConverter);
 
-		return template;
+		return messageConverter;
 	}
 
 	@Bean
-	SimpleMessageListenerContainer container(ConnectionFactory connectionFactory, @Qualifier("messageListener") MessageListener messageListener) {
+	RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
 
-		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
-		container.setQueueNames(properties.getQueueName());
-		container.setMessageListener(messageListener);
-		return container;
+		RabbitTemplate template = new RabbitTemplate(connectionFactory);
+		template.setExchange(properties.getExchangeName());
+		template.setQueue(properties.getQueueName());
+		template.setMessageConverter(messageConverter());
+
+		return template;
 	}
 
 	@Bean
@@ -120,10 +115,13 @@ public class MessagingAutoConfiguration {
 	}
 
 	@Bean
-	@ConditionalOnMissingClass(name = "org.axonframework.eventhandling.annotation.EventHandler")
-	MessageListenerAdapter messageListener(@Qualifier("messageListener") Object delegate) {
+	RabbitListenerContainerFactory<SimpleMessageListenerContainer> rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
 
-		return new MessageListenerAdapter(delegate, new Jackson2JsonMessageConverter());
+		SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+		factory.setConnectionFactory(connectionFactory);
+		factory.setMessageConverter(messageConverter());
+
+		return factory;
 	}
 
 }
