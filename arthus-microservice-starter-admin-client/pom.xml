@@ -11,7 +11,7 @@
 	<artifactId>arthus-microservice-starter-admin-client</artifactId>
 
 	<name>Arthus Microservice Admin Client Starter</name>
-
+	
 	<dependencies>
 		<!-- SPRING CLOUD STARTER -->
 		<dependency>

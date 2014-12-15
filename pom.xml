@@ -275,23 +275,4 @@
 		</plugins>
 	</build>
 
-	<profiles>
-		<profile>
-			<id>sonar</id>
-
-			<properties>
-				<src.dir>target/generated-sources/delombok</src.dir>
-			</properties>
-
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok-maven-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
 </project>
