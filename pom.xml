@@ -156,18 +156,12 @@
 				<artifactId>spring-cloud-starter-eureka</artifactId>
 				<version>${spring-cloud-starter.version}</version>
 			</dependency>
-			<!-- Új Spring Boot verziónal mar nem kell, de addig kell a @RabbitListener miatt az 1.4.0 -->
-			<!-- <dependency> -->
-			<!-- <groupId>org.springframework.amqp</groupId> -->
-			<!-- <artifactId>spring-rabbit</artifactId> -->
-			<!-- <version>1.4.0.RELEASE</version> -->
-			<!-- <exclusions> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>log4j</groupId> -->
-			<!-- <artifactId>log4j</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- </exclusions> -->
-			<!-- </dependency> -->
+			<!-- 1.4.1-es verzióban már optinal a log4j -->
+			<dependency>
+				<groupId>org.springframework.amqp</groupId>
+				<artifactId>spring-rabbit</artifactId>
+				<version>1.4.1.RELEASE</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
