@@ -11,7 +11,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 public abstract class AbstractMessageHandler {
 
 	@RabbitListener(queues = "${arthus.messaging.queueName}")
-	public void handleMessage(@Payload AbstractEvent event) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
+	public void handleMessageRouter(@Payload AbstractEvent event) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException,
 			SecurityException {
 
 		log.debug("{} received - id: {}", event.getClass().getSimpleName(), event.getId());
