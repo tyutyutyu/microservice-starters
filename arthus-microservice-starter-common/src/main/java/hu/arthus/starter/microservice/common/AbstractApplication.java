@@ -51,6 +51,8 @@ public abstract class AbstractApplication {
 		SpringApplication app = new SpringApplication(applicationClass);
 
 		SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
+		log.debug("cli profiles: {}", source.getProperty("spring.profiles.active"));
+
 		if (!source.containsProperty("spring.profiles.active")) {
 			app.setAdditionalProfiles("dev");
 		}
