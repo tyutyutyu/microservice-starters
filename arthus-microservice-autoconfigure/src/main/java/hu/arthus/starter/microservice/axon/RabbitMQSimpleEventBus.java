@@ -44,7 +44,7 @@ public class RabbitMQSimpleEventBus extends SimpleEventBus implements MessageLis
 	public void onMessage(Message message) {
 
 		EventMessage<?> event = new GenericDomainEventMessage<>(message.getMessageProperties().getCorrelationId(), 0, rabbitTemplate.getMessageConverter().fromMessage(message));
-		log.debug("[HANDLE_EVENT] New event handled. [event.id={}]", event.getIdentifier());
+		log.debug("[HANDLE_EVENT] New event handled. [event.class={}, event.id={}]", event.getPayloadType(), event.getIdentifier());
 		log.trace("[HANDLE_EVENT] New event handled. [event={}]", event);
 		super.publish(event);
 	}
