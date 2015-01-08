@@ -13,7 +13,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
 
 /**
- * Az alkalmazás indítását segító osztály.
+ * Az alkalmazás indítását segítő osztály.
  *
  * @author istvan.foldhazi
  */
