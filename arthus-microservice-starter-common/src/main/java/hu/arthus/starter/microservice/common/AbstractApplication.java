@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
 
@@ -20,6 +21,10 @@ import org.springframework.core.env.SimpleCommandLinePropertySource;
 @Slf4j
 @SpringBootApplication
 public abstract class AbstractApplication {
+
+	public static enum RequestWebEnvironment {
+		TRUE, FALSE, AUTO;
+	}
 
 	@Autowired
 	private Environment env;
@@ -48,7 +53,28 @@ public abstract class AbstractApplication {
 	 */
 	public static void start(Class<?> applicationClass, String[] args) {
 
-		SpringApplication app = new SpringApplication(applicationClass);
+		start(applicationClass, RequestWebEnvironment.FALSE, args);
+	}
+
+	/**
+	 * E függvényen keresztül lehet indítani az alkalmazást.
+	 *
+	 * @param applicationClass
+	 *            Az main metódust tartalmazó osztály típusa. (Általában a hívó osztály.)
+	 * @param requestWebEnvironment
+	 *            Flag to explicitly request a web or non-web environment or auto.
+	 * @param args
+	 *            A hívó osztály main függvényének paramétere.
+	 */
+	public static void start(Class<?> applicationClass, RequestWebEnvironment requestWebEnvironment, String[] args) {
+
+		SpringApplicationBuilder builder = new SpringApplicationBuilder(applicationClass);
+		if (requestWebEnvironment == RequestWebEnvironment.TRUE) {
+			builder = builder.web(true);
+		} else if (requestWebEnvironment == RequestWebEnvironment.FALSE) {
+			builder = builder.web(false);
+		}
+		SpringApplication app = builder.build();
 
 		SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
 		log.debug("cli profiles: {}", source.getProperty("spring.profiles.active"));
@@ -59,5 +85,4 @@ public abstract class AbstractApplication {
 
 		app.run(args);
 	}
-
 }

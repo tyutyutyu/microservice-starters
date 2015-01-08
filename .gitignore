@@ -39,4 +39,6 @@ nb-configuration.xml
 **/target/**
  
 # Sonar #
-.sonar/
+.sonar//arthus-microservice-autoconfigure/
+/arthus-microservice-starter-common/
+/arthus-microservice-autoconfigure/
