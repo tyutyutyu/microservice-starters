@@ -53,7 +53,7 @@ public abstract class AbstractApplication {
 	 */
 	public static void start(Class<?> applicationClass, String[] args) {
 
-		start(applicationClass, RequestWebEnvironment.FALSE, args);
+		start(applicationClass, RequestWebEnvironment.AUTO, args);
 	}
 
 	/**
