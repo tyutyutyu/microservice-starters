@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-parent</artifactId>
-		<version>1.2.0.RELEASE</version>
+		<version>1.2.1.RELEASE</version>
 	</parent>
 
 	<groupId>hu.arthus</groupId>
@@ -51,6 +51,11 @@
 	</distributionManagement>
 
 	<repositories>
+		<repository>
+			<id>repo.spring.io-releases</id>
+			<name>repo.spring.io-releases</name>
+			<url>http://repo.spring.io/release</url>
+		</repository>
 		<repository>
 			<id>repo.spring.io-milestones</id>
 			<name>repo.spring.io-milestones</name>
