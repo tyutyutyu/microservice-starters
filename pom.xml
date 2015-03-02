@@ -161,12 +161,7 @@
 				<artifactId>spring-cloud-starter-eureka</artifactId>
 				<version>${spring-cloud-starter.version}</version>
 			</dependency>
-			<!-- 1.4.1-es verzióban már optinal a log4j -->
-			<dependency>
-				<groupId>org.springframework.amqp</groupId>
-				<artifactId>spring-rabbit</artifactId>
-				<version>1.4.1.RELEASE</version>
-			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 
