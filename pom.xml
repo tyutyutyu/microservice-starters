@@ -161,7 +161,11 @@
 				<artifactId>spring-cloud-starter-eureka</artifactId>
 				<version>${spring-cloud-starter.version}</version>
 			</dependency>
-			
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-parent</artifactId>
+				<version>${spring-cloud-starter.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
