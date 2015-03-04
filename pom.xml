@@ -28,7 +28,6 @@
 		<assertj.version>1.7.1</assertj.version>
 		<axon.version>2.4</axon.version>
 		<commons-lang3.version>3.3.2</commons-lang3.version>
-		<eureka.version>1.1.148</eureka.version>
 		<lombok.version>1.16.2</lombok.version>
 		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
 		<usertype.version>3.2.0.GA</usertype.version>
@@ -128,17 +127,6 @@
 				<scope>import</scope>
 			</dependency>
 
-			<dependency>
-				<groupId>com.netflix.eureka</groupId>
-				<artifactId>eureka-client</artifactId>
-				<version>${eureka.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>commons-logging</groupId>
-						<artifactId>commons-logging</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
