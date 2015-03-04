@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-parent</artifactId>
-		<version>1.2.1.RELEASE</version>
+		<version>1.2.2.RELEASE</version>
 	</parent>
 
 	<groupId>hu.arthus</groupId>
@@ -30,8 +30,8 @@
 		<commons-lang3.version>3.3.2</commons-lang3.version>
 		<eureka.version>1.1.148</eureka.version>
 		<lombok.version>1.16.2</lombok.version>
+		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
 		<usertype.version>3.2.0.GA</usertype.version>
-		<spring-cloud-starter.version>1.0.0.RC3</spring-cloud-starter.version>
 	</properties>
 
 	<modules>
@@ -123,7 +123,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-starter-parent</artifactId>
-				<version>${spring-cloud-starter.version}</version>
+				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
