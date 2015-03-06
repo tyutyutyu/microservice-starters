@@ -131,12 +131,6 @@
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-starter-eureka</artifactId>
 				<version>${spring-cloud.version}</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>archaius-core</artifactId>
-						<groupId>com.netflix.archaius</groupId>
-					</exclusion>
-				</exclusions>
 			</dependency>
 
 			<!-- SPRING CLOUD -->
