@@ -8,12 +8,12 @@
 		<version>1.2.2.RELEASE</version>
 	</parent>
 
-	<groupId>hu.arthus</groupId>
-	<artifactId>arthus-microservice-starters</artifactId>
+	<groupId>hu.bankmonitor</groupId>
+	<artifactId>microservice-starters</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>Arthus Microservice Starters Parent</name>
+	<name>Microservice Starters Parent</name>
 
 	<prerequisites>
 		<maven>3.0.4</maven>
@@ -24,7 +24,7 @@
 		<maven-jaxb2-plugin.version>0.12.3</maven-jaxb2-plugin.version>
 		<sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
 
-		<arthus-microservice-starters.version>0.0.1-SNAPSHOT</arthus-microservice-starters.version>
+		<microservice-starters.version>0.0.1-SNAPSHOT</microservice-starters.version>
 		<assertj.version>1.7.1</assertj.version>
 		<axon.version>2.4</axon.version>
 		<commons-lang3.version>3.3.2</commons-lang3.version>
@@ -34,11 +34,11 @@
 	</properties>
 
 	<modules>
-		<module>arthus-microservice-starter-common</module>
-		<module>arthus-microservice-autoconfigure</module>
-		<module>arthus-microservice-starter-admin-client</module>
-		<module>arthus-microservice-starter-axon</module>
-		<module>arthus-microservice-starter-messaging</module>
+		<module>microservice-starter-common</module>
+		<module>microservice-autoconfigure</module>
+		<module>microservice-starter-admin-client</module>
+		<module>microservice-starter-axon</module>
+		<module>microservice-starter-messaging</module>
 	</modules>
 
 	<distributionManagement>
@@ -94,29 +94,29 @@
 			</dependency>
 
 			<dependency>
-				<groupId>hu.arthus</groupId>
-				<artifactId>arthus-microservice-starter-common</artifactId>
-				<version>${arthus-microservice-starters.version}</version>
+				<groupId>hu.bankmonitor</groupId>
+				<artifactId>microservice-starter-common</artifactId>
+				<version>${microservice-starters.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>hu.arthus</groupId>
-				<artifactId>arthus-microservice-autoconfigure</artifactId>
-				<version>${arthus-microservice-starters.version}</version>
+				<groupId>hu.bankmonitor</groupId>
+				<artifactId>microservice-autoconfigure</artifactId>
+				<version>${microservice-starters.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>hu.arthus</groupId>
-				<artifactId>arthus-microservice-starter-admin-client</artifactId>
-				<version>${arthus-microservice-starters.version}</version>
+				<groupId>hu.bankmonitor</groupId>
+				<artifactId>microservice-starter-admin-client</artifactId>
+				<version>${microservice-starters.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>hu.arthus</groupId>
-				<artifactId>arthus-microservice-starter-axon</artifactId>
-				<version>${arthus-microservice-starters.version}</version>
+				<groupId>hu.bankmonitor</groupId>
+				<artifactId>microservice-starter-axon</artifactId>
+				<version>${microservice-starters.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>hu.arthus</groupId>
-				<artifactId>arthus-microservice-starter-messaging</artifactId>
-				<version>${arthus-microservice-starters.version}</version>
+				<groupId>hu.bankmonitor</groupId>
+				<artifactId>microservice-starter-messaging</artifactId>
+				<version>${microservice-starters.version}</version>
 			</dependency>
 
 			<!-- SPRING CLOUD STARTER -->

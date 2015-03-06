@@ -1,2 +1,0 @@
-# Arthus Microservices Starter Common
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=hu.arthus.starter.microservice.common.CommonConfiguration
