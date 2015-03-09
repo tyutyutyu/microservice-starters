@@ -26,10 +26,12 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @ConditionalOnClass({ RabbitAdmin.class })
 @Configuration
 @EnableConfigurationProperties(MessagingProperties.class)
+@Import(EventClassFinderConfiguration.class)
 @Slf4j
 @SuppressWarnings("static-method")
 public class MessagingAutoConfiguration {
