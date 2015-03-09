@@ -297,8 +297,8 @@
 					<excludes>
 						<exclude>**/Abstract*.java</exclude>
 					</excludes>
+					<argLine>-Xmx1024m</argLine>
 				</configuration>
-				<argLine>-Xmx1024m</argLine>
 			</plugin>
 		</plugins>
 	</build>
