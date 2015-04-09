@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-parent</artifactId>
-		<version>1.2.2.RELEASE</version>
+		<version>1.2.3.RELEASE</version>
 	</parent>
 
 	<groupId>hu.bankmonitor</groupId>
@@ -25,9 +25,9 @@
 		<sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
 
 		<microservice-starters.version>0.0.1-SNAPSHOT</microservice-starters.version>
-		<assertj.version>2.0.0</assertj.version>
+		<assertj.version>3.0.0</assertj.version>
 		<axon.version>2.4</axon.version>
-		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<commons-lang3.version>3.4</commons-lang3.version>
 		<lombok.version>1.16.2</lombok.version>
 		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
 		<usertype.version>3.2.0.GA</usertype.version>
