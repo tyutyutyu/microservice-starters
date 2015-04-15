@@ -30,6 +30,7 @@
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<lombok.version>1.16.2</lombok.version>
 		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
+		<spring-session.version>1.0.0.RELEASE</spring-session.version>
 		<usertype.version>3.2.0.GA</usertype.version>
 	</properties>
 
@@ -144,6 +145,13 @@
 						<groupId>org.tmatesoft.svnkit</groupId>
 					</exclusion>
 				</exclusions>
+			</dependency>
+
+			<!-- SPRING SESSION -->
+			<dependency>
+				<groupId>org.springframework.session</groupId>
+				<artifactId>spring-session</artifactId>
+				<version>${spring-session.version}</version>
 			</dependency>
 
 			<dependency>
