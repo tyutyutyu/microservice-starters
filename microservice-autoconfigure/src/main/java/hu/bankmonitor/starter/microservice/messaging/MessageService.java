@@ -2,6 +2,8 @@ package hu.bankmonitor.starter.microservice.messaging;
 
 import java.util.Date;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
@@ -9,6 +11,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@Slf4j
 public class MessageService {
 
 	class MicroserviceStarterMessagePostProcessor implements MessagePostProcessor {
@@ -44,9 +47,7 @@ public class MessageService {
 	 */
 	public void send(AbstractEvent event) {
 
-		String routingKey = event.getClass().getCanonicalName();
-
-		rabbitTemplate.convertAndSend(routingKey, event, messagePostProcessor, new CorrelationData(event.getId()));
+		send(event, event.getId());
 	}
 
 	/**
@@ -60,6 +61,8 @@ public class MessageService {
 	public void send(Object payload, String identifier) {
 
 		String routingKey = payload.getClass().getCanonicalName();
+
+		log.debug("Sending message - routingKey: {}, id: {}, payload: {}", routingKey, identifier, payload);
 
 		rabbitTemplate.convertAndSend(routingKey, payload, messagePostProcessor, new CorrelationData(identifier));
 	}
