@@ -26,7 +26,7 @@ public class EventClassFinderConfiguration {
 
 	private static final Pattern AXON_STARTER_PACKAGE_PATTERN = Pattern.compile("hu\\.application\\.starter\\.microservice\\.axon\\..*");
 
-	private static final String BASE_PACKAGE = "hu.application";
+	private static final String BASE_PACKAGE = "hu";
 
 	public static interface EventClassFinder {
 
