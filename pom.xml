@@ -20,7 +20,7 @@
 	</prerequisites>
 
 	<properties>
-		<lombok-maven-plugin.version>1.16.2.0</lombok-maven-plugin.version>
+		<lombok-maven-plugin.version>1.16.4.0</lombok-maven-plugin.version>
 		<maven-jaxb2-plugin.version>0.12.3</maven-jaxb2-plugin.version>
 		<sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
 
@@ -28,7 +28,7 @@
 		<assertj.version>3.0.0</assertj.version>
 		<axon.version>2.4</axon.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
-		<lombok.version>1.16.2</lombok.version>
+		<lombok.version>1.16.4</lombok.version>
 		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
 		<spring-session.version>1.0.0.RELEASE</spring-session.version>
 		<usertype.version>3.2.0.GA</usertype.version>
