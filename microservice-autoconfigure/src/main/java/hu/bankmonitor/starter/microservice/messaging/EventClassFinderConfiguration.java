@@ -24,7 +24,7 @@ import org.springframework.util.ReflectionUtils;
 @Slf4j
 public class EventClassFinderConfiguration {
 
-	private static final Pattern AXON_STARTER_PACKAGE_PATTERN = Pattern.compile("hu\\.application\\.starter\\.microservice\\.axon\\..*");
+	private static final Pattern AXON_STARTER_PACKAGE_PATTERN = Pattern.compile("hu\\.bankmonitor\\.starter\\.microservice\\.axon\\..*");
 
 	private static final String BASE_PACKAGE = "hu";
 
