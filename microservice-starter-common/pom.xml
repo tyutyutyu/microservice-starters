@@ -30,6 +30,11 @@
 			<artifactId>joda-time</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.logentries</groupId>
+			<artifactId>logentries-appender</artifactId>
+		</dependency>
+
 		<!-- PROVIDED -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
