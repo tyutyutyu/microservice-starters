@@ -8,11 +8,14 @@ import com.logentries.logback.LogentriesAppender;
 
 import javax.annotation.PostConstruct;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@Slf4j
 public class LogentriesConfig {
 
 	@Value("${application.logEntriesToken:null}")
@@ -20,6 +23,8 @@ public class LogentriesConfig {
 
 	@PostConstruct
 	public void init() {
+
+		log.info("Init Logentries appender with token: {}", token);
 
 		if (token != null) {
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
