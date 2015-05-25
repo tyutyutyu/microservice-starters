@@ -33,8 +33,8 @@ public class LogentriesConfig {
 			LogentriesAppender logentriesAppender = new LogentriesAppender();
 			logentriesAppender.setName("LOGENTRIES_APPENDER");
 			logentriesAppender.setContext(loggerContext);
-			logentriesAppender.setDebug(true);
-			logentriesAppender.setToken("f26fc026-4769-45b4-b747-4ecad9cbb907");
+			logentriesAppender.setDebug(false);
+			logentriesAppender.setToken(token);
 			logentriesAppender.setSsl(false);
 			logentriesAppender.setFacility("USER");
 
