@@ -2,7 +2,7 @@ package hu.bankmonitor.starter.microservice.common;
 
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.classic.PatternLayout;
+import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
 
 import com.logentries.logback.LogentriesAppender;
 
@@ -27,23 +27,27 @@ public class LogentriesConfig {
 		log.info("Init Logentries appender with token: {}", token);
 
 		if (token != null) {
+
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 
 			LogentriesAppender logentriesAppender = new LogentriesAppender();
+			logentriesAppender.setName("LOGENTRIES_APPENDER");
 			logentriesAppender.setContext(loggerContext);
-			logentriesAppender.setDebug(false);
-			logentriesAppender.setToken(token);
+			logentriesAppender.setDebug(true);
+			logentriesAppender.setToken("f26fc026-4769-45b4-b747-4ecad9cbb907");
 			logentriesAppender.setSsl(false);
 			logentriesAppender.setFacility("USER");
-			PatternLayout patternLayout = new PatternLayout();
-			patternLayout.setContext(loggerContext);
-			patternLayout.setPattern("%d{HH:mm:ss.SSS} [%thread] [%-5level] %logger{50} - %msg%n");
-			logentriesAppender.setLayout(patternLayout);
+
+			PatternLayoutEncoder patternLayoutEncoder = new PatternLayoutEncoder();
+			patternLayoutEncoder.setContext(loggerContext);
+			patternLayoutEncoder.setPattern("%d{HH:mm:ss.SSS} [%thread] [%-5level] %logger{50} - %msg%n");
+			patternLayoutEncoder.start();
+			logentriesAppender.setEncoder(patternLayoutEncoder);
 
 			logentriesAppender.start();
 
-			Logger root = (Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
-			root.addAppender(logentriesAppender);
+			Logger rootLogger = (Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
+			rootLogger.addAppender(logentriesAppender);
 		}
 	}
 
