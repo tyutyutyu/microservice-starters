@@ -28,7 +28,6 @@
 		<assertj.version>3.0.0</assertj.version>
 		<axon.version>2.4</axon.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
-		<logentries-appender.version>1.1.30</logentries-appender.version>
 		<lombok.version>1.16.4</lombok.version>
 		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
 		<spring-session.version>1.0.0.RELEASE</spring-session.version>
@@ -155,11 +154,6 @@
 				<version>${spring-session.version}</version>
 			</dependency>
 
-			<dependency>
-				<groupId>com.logentries</groupId>
-				<artifactId>logentries-appender</artifactId>
-				<version>${logentries-appender.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
