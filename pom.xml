@@ -31,6 +31,7 @@
 		<lombok.version>1.16.4</lombok.version>
 		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
 		<spring-session.version>1.0.0.RELEASE</spring-session.version>
+		<super-csv.version>2.3.1</super-csv.version>
 		<usertype.version>3.2.0.GA</usertype.version>
 	</properties>
 
@@ -155,6 +156,11 @@
 			</dependency>
 
 			<dependency>
+				<groupId>net.sf.opencsv</groupId>
+				<artifactId>opencsv</artifactId>
+				<version>${opencsv.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>${commons-lang3.version}</version>
@@ -178,6 +184,11 @@
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${lombok.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.supercsv</groupId>
+				<artifactId>super-csv</artifactId>
+				<version>${super-csv.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
