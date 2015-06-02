@@ -1,5 +1,2 @@
 # Microservices Starter Common
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=hu.bankmonitor.starter.microservice.common.CommonConfiguration
-
-# Microservices Starter Common Logentries Config
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=hu.bankmonitor.starter.microservice.common.LogentriesConfig
