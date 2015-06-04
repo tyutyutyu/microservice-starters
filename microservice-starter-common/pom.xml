@@ -29,6 +29,10 @@
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>net.kencochrane.raven</groupId>
+			<artifactId>raven-logback</artifactId>
+		</dependency>
 
 		<!-- PROVIDED -->
 		<dependency>

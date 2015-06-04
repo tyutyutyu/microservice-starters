@@ -29,6 +29,7 @@
 		<axon.version>2.4</axon.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<lombok.version>1.16.4</lombok.version>
+		<raven-logback.version>6.0.0</raven-logback.version>
 		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
 		<spring-session.version>1.0.0.RELEASE</spring-session.version>
 		<super-csv.version>2.3.1</super-csv.version>
@@ -155,6 +156,11 @@
 				<version>${spring-session.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>net.kencochrane.raven</groupId>
+				<artifactId>raven-logback</artifactId>
+				<version>${raven-logback.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>net.sf.opencsv</groupId>
 				<artifactId>opencsv</artifactId>
