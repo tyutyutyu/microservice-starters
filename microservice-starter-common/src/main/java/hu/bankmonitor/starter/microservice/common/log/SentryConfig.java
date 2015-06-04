@@ -36,6 +36,7 @@ public class SentryConfig {
 
 			ThresholdFilter thresholdFilter = new ThresholdFilter();
 			thresholdFilter.setLevel("ERROR");
+			thresholdFilter.start();
 			sentryAppender.addFilter(thresholdFilter);
 
 			sentryAppender.start();
