@@ -70,6 +70,7 @@
 					<plugin>
 						<groupId>org.projectlombok</groupId>
 						<artifactId>lombok-maven-plugin</artifactId>
+						<version>${lombok-maven-plugin.version}</version>
 					</plugin>
 				</plugins>
 			</build>
