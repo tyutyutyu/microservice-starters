@@ -147,6 +147,17 @@
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-eureka-server</artifactId>
+				<version>${spring-cloud.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.amazonaws</groupId>
+						<artifactId>aws-java-sdk</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-starter-eureka</artifactId>
 				<version>${spring-cloud.version}</version>
 			</dependency>
