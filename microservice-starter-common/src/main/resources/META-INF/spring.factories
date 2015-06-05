@@ -3,3 +3,6 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=hu.bankmonitor.st
 
 # Microservices Starter Common Sentry Config
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=hu.bankmonitor.starter.microservice.common.log.SentryConfig
+
+# Microservices Starter Common Aws Logs Config
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=hu.bankmonitor.starter.microservice.common.log.AwsLogsConfig

@@ -23,15 +23,16 @@ public class SentryConfig {
 	@PostConstruct
 	public void init() {
 
-		log.info("Init Sentry appender with dsn: {}", dsn);
-
 		if (dsn != null) {
+
+			log.info("Init Sentry appender with dsn: {}", dsn);
 
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 
 			SentryAppender sentryAppender = new SentryAppender();
 			sentryAppender.setName("SENTRY_APPENDER");
 			sentryAppender.setContext(loggerContext);
+
 			sentryAppender.setDsn(dsn);
 
 			ThresholdFilter thresholdFilter = new ThresholdFilter();

@@ -26,6 +26,10 @@
 		</dependency>
 
 		<dependency>
+			<groupId>hu.bankmonitor.commons</groupId>
+			<artifactId>logback-appenders</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 		</dependency>

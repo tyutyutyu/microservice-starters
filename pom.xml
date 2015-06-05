@@ -30,6 +30,8 @@
 		<spring-boot-maven-plugin.version>1.2.3.RELEASE</spring-boot-maven-plugin.version>
 
 		<microservice-starters.version>0.0.1-SNAPSHOT</microservice-starters.version>
+		<logback-appenders.version>0.0.1</logback-appenders.version>
+
 		<assertj.version>3.0.0</assertj.version>
 		<axon.version>2.4.1</axon.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
@@ -62,6 +64,15 @@
 			<id>repo.spring.io-releases</id>
 			<name>repo.spring.io-releases</name>
 			<url>http://repo.spring.io/release</url>
+		</repository>
+
+		<repository>
+			<id>bintray-bankmonitor-logback-appenders</id>
+			<name>bintray</name>
+			<url>http://dl.bintray.com/bankmonitor/logback-appenders</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 
 		<repository>
@@ -112,6 +123,12 @@
 				<groupId>hu.bankmonitor</groupId>
 				<artifactId>microservice-starter-messaging</artifactId>
 				<version>${microservice-starters.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>hu.bankmonitor.commons</groupId>
+				<artifactId>logback-appenders</artifactId>
+				<version>${logback-appenders.version}</version>
 			</dependency>
 
 			<!-- SPRING CLOUD STARTER -->
