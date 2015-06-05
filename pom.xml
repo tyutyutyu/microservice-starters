@@ -67,7 +67,7 @@
 		</repository>
 
 		<repository>
-			<id>bintray-bankmonitor-logback-appenders</id>
+			<id>bintray-bankmonitor-hu.bankmonitor.commons</id>
 			<name>bintray</name>
 			<url>http://dl.bintray.com/bankmonitor/hu.bankmonitor.commons</url>
 			<snapshots>
