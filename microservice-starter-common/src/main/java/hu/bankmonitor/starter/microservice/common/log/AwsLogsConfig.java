@@ -10,21 +10,19 @@ import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Slf4j
 public class AwsLogsConfig {
 
-	@Autowired(required = false)
-	private AwsLogsProperties properties;
-
 	@PostConstruct
 	public void init() {
 
-		if (properties != null) {
-			log.info("Init AWS Logs appender with Log Stream: {}", properties.getLogStreamName());
+		if (properties() != null) {
+			log.info("Init AWS Logs appender with Log Stream: {}", properties().getLogStreamName());
 
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 
@@ -32,11 +30,11 @@ public class AwsLogsConfig {
 			awsLogsJsonAppender.setName("AWS_LOGS_APPENDER");
 			awsLogsJsonAppender.setContext(loggerContext);
 
-			awsLogsJsonAppender.setAwsAccessKey(properties.getAwsAccessKey());
-			awsLogsJsonAppender.setAwsSecretKey(properties.getAwsSecretKey());
-			awsLogsJsonAppender.setAwsRegionName(properties.getAwsRegionName());
-			awsLogsJsonAppender.setLogGroupName(properties.getLogGroupName());
-			awsLogsJsonAppender.setLogStreamName(properties.getLogStreamName());
+			awsLogsJsonAppender.setAwsAccessKey(properties().getAwsAccessKey());
+			awsLogsJsonAppender.setAwsSecretKey(properties().getAwsSecretKey());
+			awsLogsJsonAppender.setAwsRegionName(properties().getAwsRegionName());
+			awsLogsJsonAppender.setLogGroupName(properties().getLogGroupName());
+			awsLogsJsonAppender.setLogStreamName(properties().getLogStreamName());
 
 			awsLogsJsonAppender.start();
 
@@ -45,6 +43,14 @@ public class AwsLogsConfig {
 		} else {
 			log.debug("No AWS Logs config.");
 		}
+	}
+
+	@Bean
+	@ConditionalOnProperty(prefix = "application.awslogs", name = { "awsAccessKey", "awsSecretKey" })
+	@SuppressWarnings("static-method")
+	AwsLogsProperties properties() {
+
+		return new AwsLogsProperties();
 	}
 
 }

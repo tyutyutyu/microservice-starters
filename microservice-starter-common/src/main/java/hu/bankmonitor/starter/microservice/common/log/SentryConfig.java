@@ -12,18 +12,19 @@ import net.kencochrane.raven.logback.SentryAppender;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 
 @Configuration
 @Slf4j
 public class SentryConfig {
 
-	@Value("${application.sentryDsn:null}")
+	@Value("${application.sentryDsn:}")
 	private String dsn;
 
 	@PostConstruct
 	public void init() {
 
-		if (dsn != null) {
+		if (!StringUtils.isEmpty(dsn)) {
 
 			log.info("Init Sentry appender with dsn: {}", dsn);
 
