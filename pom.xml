@@ -30,7 +30,7 @@
 		<spring-boot-maven-plugin.version>1.2.3.RELEASE</spring-boot-maven-plugin.version>
 
 		<microservice-starters.version>0.0.1-SNAPSHOT</microservice-starters.version>
-		<logback-appenders.version>0.0.1</logback-appenders.version>
+		<logback-appenders.version>0.0.2</logback-appenders.version>
 
 		<assertj.version>3.0.0</assertj.version>
 		<axon.version>2.4.1</axon.version>
