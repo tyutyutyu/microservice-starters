@@ -42,7 +42,8 @@ public class AwsLogsConfig {
 
 			Logger rootLogger = (Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
 			rootLogger.addAppender(awsLogsJsonAppender);
-
+		} else {
+			log.debug("No AWS Logs config.");
 		}
 	}
 

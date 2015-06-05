@@ -44,6 +44,8 @@ public class SentryConfig {
 
 			Logger rootLogger = (Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
 			rootLogger.addAppender(sentryAppender);
+		} else {
+			log.debug("No Sentry dsn.");
 		}
 	}
 
