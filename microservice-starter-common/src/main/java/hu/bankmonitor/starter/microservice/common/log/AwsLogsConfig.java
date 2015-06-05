@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,10 +19,13 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class AwsLogsConfig {
 
+	@Autowired(required = false)
+	private AwsLogsProperties properties;
+
 	@PostConstruct
 	public void init() {
 
-		if (properties() != null) {
+		if (properties != null) {
 			log.info("Init AWS Logs appender with Log Stream: {}", properties().getLogStreamName());
 
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
