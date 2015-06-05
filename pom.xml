@@ -129,6 +129,12 @@
 				<groupId>hu.bankmonitor.commons</groupId>
 				<artifactId>logback-appenders</artifactId>
 				<version>${logback-appenders.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>commons-logging</artifactId>
+						<groupId>commons-logging</groupId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 
 			<!-- SPRING CLOUD STARTER -->
