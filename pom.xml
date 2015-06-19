@@ -33,6 +33,7 @@
 		<logback-appenders.version>0.0.4</logback-appenders.version>
 
 		<assertj.version>3.0.0</assertj.version>
+		<aws-java-sdk.version>1.10.1</aws-java-sdk.version>
 		<axon.version>2.4.1</axon.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<lombok.version>1.16.4</lombok.version>
@@ -190,6 +191,11 @@
 				<version>${spring-session.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk-s3</artifactId>
+				<version>${aws-java-sdk.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>net.kencochrane.raven</groupId>
 				<artifactId>raven-logback</artifactId>
