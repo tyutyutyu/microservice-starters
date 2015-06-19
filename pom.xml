@@ -10,7 +10,7 @@
 
 	<groupId>hu.bankmonitor</groupId>
 	<artifactId>microservice-starters</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Microservice Starters Parent</name>
