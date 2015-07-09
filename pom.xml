@@ -27,13 +27,14 @@
 	</scm>
 
 	<properties>
-		<lombok-maven-plugin.version>1.16.4.0</lombok-maven-plugin.version>
+		<lombok-maven-plugin.version>1.16.4.1</lombok-maven-plugin.version>
 		<maven-enforcer-plugin.version>1.4</maven-enforcer-plugin.version>
-		<maven-javadoc-plugin.version>2.10.2</maven-javadoc-plugin.version>
+		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
 		<maven-jaxb2-plugin.version>0.12.3</maven-jaxb2-plugin.version>
+		<maven-release-plugin.version>2.5.2</maven-release-plugin.version>
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-		<sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
+		<sonar-maven-plugin.version>2.6</sonar-maven-plugin.version>
 		<spring-boot-maven-plugin.version>1.2.3.RELEASE</spring-boot-maven-plugin.version>
 
 		<microservice-starters.version>0.0.2-SNAPSHOT</microservice-starters.version>
@@ -427,6 +428,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
+					<version>${maven-release-plugin.version}</version>
 					<configuration>
 						<goals>install</goals>
 						<useReleaseProfile>false</useReleaseProfile>
