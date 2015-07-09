@@ -10,7 +10,7 @@
 
 	<groupId>hu.bankmonitor</groupId>
 	<artifactId>microservice-starters</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Microservice Starters Parent</name>
@@ -18,6 +18,13 @@
 	<prerequisites>
 		<maven>3.0.4</maven>
 	</prerequisites>
+
+	<scm>
+		<connection>scm:git:http://foldhazii@stash.arthus.hu/scm/cod/microservice-starters.git</connection>
+		<developerConnection>scm:git:ssh://git@gitlabhq01.arthus.local:7999/cod/microservice-starters.git</developerConnection>
+		<url>http://stash.arthus.hu/projects/COD/repos/microservice-starters/browse</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<properties>
 		<lombok-maven-plugin.version>1.16.4.0</lombok-maven-plugin.version>
@@ -29,7 +36,7 @@
 		<sonar-maven-plugin.version>2.5</sonar-maven-plugin.version>
 		<spring-boot-maven-plugin.version>1.2.3.RELEASE</spring-boot-maven-plugin.version>
 
-		<microservice-starters.version>0.0.1-SNAPSHOT</microservice-starters.version>
+		<microservice-starters.version>0.0.2-SNAPSHOT</microservice-starters.version>
 		<logback-appenders.version>0.0.4</logback-appenders.version>
 
 		<assertj.version>3.0.0</assertj.version>
@@ -51,14 +58,6 @@
 		<module>microservice-starter-axon</module>
 		<module>microservice-starter-messaging</module>
 	</modules>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>gitlabhq01</id>
-			<name>gitlabhq01-snapshots</name>
-			<url>http://artifactory.arthus.local/artifactory/libs-snapshot-local</url>
-		</snapshotRepository>
-	</distributionManagement>
 
 	<repositories>
 		<repository>
@@ -424,6 +423,17 @@
 					<artifactId>maven-jaxb2-plugin</artifactId>
 					<version>${maven-jaxb2-plugin.version}</version>
 				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<configuration>
+						<goals>install</goals>
+						<useReleaseProfile>false</useReleaseProfile>
+						<releaseProfiles>release</releaseProfiles>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -436,6 +446,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
