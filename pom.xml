@@ -26,6 +26,19 @@
 		<tag>HEAD</tag>
 	</scm>
 
+	<distributionManagement>
+		<repository>
+			<id>gitlabhq01-releases</id>
+			<name>gitlabhq01-releases</name>
+			<url>http://artifactory.arthus.local/artifactory/libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>gitlabhq01-snapshots</id>
+			<name>gitlabhq01-snapshots</name>
+			<url>http://artifactory.arthus.local/artifactory/libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<properties>
 		<lombok-maven-plugin.version>1.16.4.1</lombok-maven-plugin.version>
 		<maven-enforcer-plugin.version>1.4</maven-enforcer-plugin.version>
