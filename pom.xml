@@ -10,7 +10,7 @@
 
 	<groupId>hu.bankmonitor</groupId>
 	<artifactId>microservice-starters</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Microservice Starters Parent</name>
@@ -37,7 +37,7 @@
 		<sonar-maven-plugin.version>2.6</sonar-maven-plugin.version>
 		<spring-boot-maven-plugin.version>1.2.3.RELEASE</spring-boot-maven-plugin.version>
 
-		<microservice-starters.version>0.0.2-SNAPSHOT</microservice-starters.version>
+		<microservice-starters.version>0.0.5-SNAPSHOT</microservice-starters.version>
 		<logback-appenders.version>0.0.4</logback-appenders.version>
 
 		<assertj.version>3.0.0</assertj.version>
