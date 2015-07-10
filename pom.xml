@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-parent</artifactId>
-		<version>1.2.3.RELEASE</version>
+		<version>1.2.5.RELEASE</version>
 	</parent>
 
 	<groupId>hu.bankmonitor</groupId>
@@ -53,16 +53,16 @@
 		<microservice-starters.version>0.0.7-SNAPSHOT</microservice-starters.version>
 		<logback-appenders.version>0.0.4</logback-appenders.version>
 
-		<assertj.version>3.0.0</assertj.version>
-		<aws-java-sdk.version>1.10.1</aws-java-sdk.version>
-		<axon.version>2.4.1</axon.version>
+		<assertj.version>3.1.0</assertj.version>
+		<aws-java-sdk.version>1.10.4</aws-java-sdk.version>
+		<axon.version>2.4.2</axon.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<lombok.version>1.16.4</lombok.version>
 		<raven-logback.version>6.0.0</raven-logback.version>
-		<spring-cloud.version>1.0.0.RELEASE</spring-cloud.version>
-		<spring-session.version>1.0.0.RELEASE</spring-session.version>
+		<spring-cloud.version>1.0.2.RELEASE</spring-cloud.version>
+		<spring-session.version>1.0.1.RELEASE</spring-session.version>
 		<super-csv.version>2.3.1</super-csv.version>
-		<usertype.version>3.2.0.GA</usertype.version>
+		<usertype.version>4.0.0.GA</usertype.version>
 	</properties>
 
 	<modules>
@@ -79,31 +79,17 @@
 			<name>repo.spring.io-releases</name>
 			<url>http://repo.spring.io/release</url>
 		</repository>
-		<repository>
-			<id>repo.spring.io</id>
-			<name>repo.spring.io-snapshots</name>
-			<url>http://repo.spring.io/libs-snapshot-local</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
 
 		<repository>
 			<id>bintray-bankmonitor-hu.bankmonitor.commons</id>
 			<name>bintray</name>
 			<url>http://dl.bintray.com/bankmonitor/hu.bankmonitor.commons</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
 		</repository>
 
 		<repository>
 			<id>gitlabhq01</id>
-			<name>gitlabhq01-snapshots</name>
-			<url>http://artifactory.arthus.local/artifactory/libs-snapshot-local</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
+			<name>gitlabhq01-release</name>
+			<url>http://artifactory.arthus.local/artifactory/libs-release-local</url>
 		</repository>
 	</repositories>
 
