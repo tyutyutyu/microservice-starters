@@ -58,8 +58,10 @@
 		<axon.version>2.4.2</axon.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<lombok.version>1.16.4</lombok.version>
+		<poi.version>3.12</poi.version>
 		<raven-logback.version>6.0.0</raven-logback.version>
 		<spring-cloud.version>1.0.2.RELEASE</spring-cloud.version>
+		<spring-integration-java-dsl.version>1.0.1.RELEASE</spring-integration-java-dsl.version>
 		<spring-session.version>1.0.1.RELEASE</spring-session.version>
 		<super-csv.version>2.3.1</super-csv.version>
 		<usertype.version>4.0.0.GA</usertype.version>
@@ -190,6 +192,13 @@
 				<version>${spring-session.version}</version>
 			</dependency>
 
+			<!-- SPRING INTEGRATION -->
+			<dependency>
+				<groupId>org.springframework.integration</groupId>
+				<artifactId>spring-integration-java-dsl</artifactId>
+				<version>${spring-integration-java-dsl.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>com.amazonaws</groupId>
 				<artifactId>aws-java-sdk-core</artifactId>
@@ -246,6 +255,16 @@
 						<artifactId>commons-logging</artifactId>
 					</exclusion>
 				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${poi.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.assertj</groupId>
