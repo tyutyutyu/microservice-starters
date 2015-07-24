@@ -48,10 +48,10 @@
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 		<sonar-maven-plugin.version>2.6</sonar-maven-plugin.version>
-		<spring-boot-maven-plugin.version>1.2.3.RELEASE</spring-boot-maven-plugin.version>
+		<spring-boot-maven-plugin.version>1.2.5.RELEASE</spring-boot-maven-plugin.version>
 
 		<microservice-starters.version>0.0.10-SNAPSHOT</microservice-starters.version>
-		<logback-appenders.version>0.0.4</logback-appenders.version>
+		<logback-appenders.version>0.0.5</logback-appenders.version>
 
 		<assertj.version>3.1.0</assertj.version>
 		<aws-java-sdk.version>1.10.4</aws-java-sdk.version>

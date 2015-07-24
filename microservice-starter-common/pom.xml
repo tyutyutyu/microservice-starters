@@ -43,6 +43,10 @@
 			<groupId>net.kencochrane.raven</groupId>
 			<artifactId>raven-logback</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
 
 		<!-- PROVIDED -->
 		<dependency>
