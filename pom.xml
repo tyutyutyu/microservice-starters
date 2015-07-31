@@ -65,6 +65,7 @@
 		<spring-session.version>1.0.1.RELEASE</spring-session.version>
 		<super-csv.version>2.3.1</super-csv.version>
 		<usertype.version>4.0.0.GA</usertype.version>
+		<libphonenumber.version>4.9</libphonenumber.version>
 	</properties>
 
 	<modules>
@@ -291,6 +292,12 @@
 				<artifactId>super-csv</artifactId>
 				<version>${super-csv.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.googlecode.libphonenumber</groupId>
+				<artifactId>libphonenumber</artifactId>
+				<version>${libphonenumber.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
