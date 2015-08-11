@@ -51,7 +51,7 @@
 		<spring-boot-maven-plugin.version>1.2.5.RELEASE</spring-boot-maven-plugin.version>
 
 		<microservice-starters.version>0.0.13-SNAPSHOT</microservice-starters.version>
-		<logback-appenders.version>0.0.5</logback-appenders.version>
+		<logback-appenders.version>0.0.7</logback-appenders.version>
 
 		<assertj.version>3.1.0</assertj.version>
 		<aws-java-sdk.version>1.10.4</aws-java-sdk.version>
