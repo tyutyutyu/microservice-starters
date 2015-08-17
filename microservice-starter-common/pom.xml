@@ -26,6 +26,10 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.papertrailapp</groupId>
+			<artifactId>logback-syslog4j</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>hu.bankmonitor.commons</groupId>
 			<artifactId>logback-appenders</artifactId>
 			<exclusions>
@@ -36,6 +40,10 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 		</dependency>
@@ -43,9 +51,12 @@
 			<groupId>net.kencochrane.raven</groupId>
 			<artifactId>raven-logback</artifactId>
 		</dependency>
+
+		<!-- OPTIONAL -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
 		</dependency>
 
 		<!-- PROVIDED -->

@@ -1,19 +1,18 @@
 package hu.bankmonitor.starter.microservice.common.log;
 
-import ch.qos.logback.classic.Logger;
-import ch.qos.logback.classic.LoggerContext;
-
 import hu.bankmonitor.commons.logback.AwsLogsJsonAppender;
 
 import javax.annotation.PostConstruct;
-
-import lombok.extern.slf4j.Slf4j;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.LoggerContext;
+import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @Slf4j
@@ -23,7 +22,7 @@ public class AwsLogsConfig {
 	private AwsLogsProperties properties;
 
 	@PostConstruct
-	public void init() {
+	void init() {
 
 		if (properties != null) {
 			log.info("Init AWS Logs appender with Log Stream: {}", properties().getLogStreamName());

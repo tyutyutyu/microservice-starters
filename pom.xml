@@ -57,6 +57,7 @@
 		<aws-java-sdk.version>1.10.4</aws-java-sdk.version>
 		<axon.version>2.4.2</axon.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
+		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<lombok.version>1.16.4</lombok.version>
 		<poi.version>3.12</poi.version>
 		<raven-logback.version>6.0.0</raven-logback.version>
@@ -230,6 +231,11 @@
 				<groupId>com.amazonaws</groupId>
 				<artifactId>aws-java-sdk-ses</artifactId>
 				<version>${aws-java-sdk.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.papertrailapp</groupId>
+				<artifactId>logback-syslog4j</artifactId>
+				<version>${logback-syslog4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>net.kencochrane.raven</groupId>
