@@ -16,7 +16,7 @@
 	<name>Microservice Starters Parent</name>
 
 	<prerequisites>
-		<maven>3.0.4</maven>
+		<maven>3.0.5</maven>
 	</prerequisites>
 
 	<scm>
@@ -40,8 +40,10 @@
 	</distributionManagement>
 
 	<properties>
+		<duplicate-finder-maven-plugin.version>1.2.0</duplicate-finder-maven-plugin.version>
 		<lombok-maven-plugin.version>1.16.4.1</lombok-maven-plugin.version>
 		<maven-enforcer-plugin.version>1.4</maven-enforcer-plugin.version>
+		<maven-install-plugin.version>2.3.1</maven-install-plugin.version>
 		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
 		<maven-jaxb2-plugin.version>0.12.3</maven-jaxb2-plugin.version>
 		<maven-release-plugin.version>2.5.2</maven-release-plugin.version>
@@ -51,22 +53,26 @@
 		<spring-boot-maven-plugin.version>1.2.5.RELEASE</spring-boot-maven-plugin.version>
 
 		<microservice-starters.version>0.0.14-SNAPSHOT</microservice-starters.version>
-		<logback-appenders.version>0.0.7</logback-appenders.version>
+		<logback-appenders.version>0.0.8</logback-appenders.version>
 
 		<assertj.version>3.1.0</assertj.version>
-		<aws-java-sdk.version>1.10.4</aws-java-sdk.version>
+		<aws-java-sdk.version>1.10.11</aws-java-sdk.version>
 		<axon.version>2.4.2</axon.version>
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<commons-io.version>2.4</commons-io.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
+		<libphonenumber.version>7.0.9</libphonenumber.version>
+		<log4jdbc-log4j2.version>1.16</log4jdbc-log4j2.version>
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<lombok.version>1.16.4</lombok.version>
 		<poi.version>3.12</poi.version>
 		<raven-logback.version>6.0.0</raven-logback.version>
+		<recaptcha.version>0.0.7</recaptcha.version>
 		<spring-cloud.version>1.0.2.RELEASE</spring-cloud.version>
 		<spring-integration-java-dsl.version>1.0.1.RELEASE</spring-integration-java-dsl.version>
-		<spring-session.version>1.0.1.RELEASE</spring-session.version>
+		<spring-session.version>1.0.2.RELEASE</spring-session.version>
 		<super-csv.version>2.3.1</super-csv.version>
 		<usertype.version>4.0.0.GA</usertype.version>
-		<libphonenumber.version>4.9</libphonenumber.version>
 	</properties>
 
 	<modules>
@@ -233,6 +239,16 @@
 				<version>${aws-java-sdk.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>com.papertrailapp</groupId>
 				<artifactId>logback-syslog4j</artifactId>
 				<version>${logback-syslog4j.version}</version>
@@ -246,6 +262,11 @@
 				<groupId>net.sf.opencsv</groupId>
 				<artifactId>opencsv</artifactId>
 				<version>${opencsv.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.tanesha.recaptcha4j</groupId>
+				<artifactId>recaptcha4j</artifactId>
+				<version>${recaptcha.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -274,6 +295,11 @@
 				<version>${poi.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-scratchpad</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.assertj</groupId>
 				<artifactId>assertj-core</artifactId>
 				<version>${assertj.version}</version>
@@ -282,6 +308,16 @@
 				<groupId>org.axonframework</groupId>
 				<artifactId>axon-mongo</artifactId>
 				<version>${axon.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.bgee.log4jdbc-log4j2</groupId>
+				<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+				<version>${log4jdbc-log4j2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.libphonenumber</groupId>
+				<artifactId>libphonenumber</artifactId>
+				<version>${libphonenumber.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jadira.usertype</groupId>
@@ -298,12 +334,6 @@
 				<artifactId>super-csv</artifactId>
 				<version>${super-csv.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>com.googlecode.libphonenumber</groupId>
-				<artifactId>libphonenumber</artifactId>
-				<version>${libphonenumber.version}</version>
-			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 
@@ -465,6 +495,45 @@
 						<releaseProfiles>release</releaseProfiles>
 						<autoVersionSubmodules>true</autoVersionSubmodules>
 						<tagNameFormat>@{version}</tagNameFormat>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.basepom.maven</groupId>
+					<artifactId>duplicate-finder-maven-plugin</artifactId>
+					<version>${duplicate-finder-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>default</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<skip>false</skip>
+						<printEqualFiles>false</printEqualFiles>
+						<failBuildInCaseOfDifferentContentConflict>false</failBuildInCaseOfDifferentContentConflict>
+						<failBuildInCaseOfEqualContentConflict>false</failBuildInCaseOfEqualContentConflict>
+						<failBuildInCaseOfConflict>false</failBuildInCaseOfConflict>
+						<checkCompileClasspath>true</checkCompileClasspath>
+						<checkRuntimeClasspath>true</checkRuntimeClasspath>
+						<checkTestClasspath>true</checkTestClasspath>
+						<quiet>false</quiet>
+						<preferLocal>true</preferLocal>
+						<useResultFile>true</useResultFile>
+						<resultFileMinClasspathCount>2</resultFileMinClasspathCount>
+						<resultFile>${project.build.directory}/duplicate-finder-result.xml</resultFile>
+
+						<!-- Version 1.1.1+ -->
+						<includeBootClasspath>false</includeBootClasspath>
+						<bootClasspathProperty>sun.boot.class.path</bootClasspathProperty>
+						<!-- Version 1.1.1+ -->
+
+						<!-- Version 1.2.0+ -->
+						<includePomProjects>false</includePomProjects>
+						<!-- Version 1.2.0+ -->
 					</configuration>
 				</plugin>
 			</plugins>
