@@ -1,5 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 hu.bankmonitor.starter.microservice.common.CommonConfiguration,\
 hu.bankmonitor.starter.microservice.common.log.SentryConfig,\
-hu.bankmonitor.starter.microservice.common.log.AwsLogsConfig,\
 hu.bankmonitor.starter.microservice.common.log.PaperTrailConfig
