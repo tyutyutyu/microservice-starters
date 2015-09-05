@@ -155,7 +155,6 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-config-server</artifactId>
-				<version>${spring-cloud.version}</version>
 				<exclusions>
 					<exclusion>
 						<artifactId>svnkit</artifactId>
