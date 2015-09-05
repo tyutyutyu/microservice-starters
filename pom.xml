@@ -67,7 +67,7 @@
 		<poi.version>3.12</poi.version>
 		<raven-logback.version>6.0.0</raven-logback.version>
 		<recaptcha.version>0.0.7</recaptcha.version>
-		<spring-cloud.version>1.0.2.RELEASE</spring-cloud.version>
+		<spring-cloud.version>Angel.SR2</spring-cloud.version>
 		<spring-integration-java-dsl.version>1.0.1.RELEASE</spring-integration-java-dsl.version>
 		<spring-session.version>1.0.2.RELEASE</spring-session.version>
 		<super-csv.version>2.3.1</super-csv.version>
