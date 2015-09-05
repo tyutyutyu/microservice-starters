@@ -68,6 +68,7 @@
 		<raven-logback.version>6.0.0</raven-logback.version>
 		<recaptcha.version>0.0.7</recaptcha.version>
 		<spring-cloud-starter-parent.version>Angel.SR3</spring-cloud-starter-parent.version>
+		<spring-cloud-config-server.version>1.0.2.RELEASE</spring-cloud-config-server.version>
 		<spring-integration-java-dsl.version>1.0.1.RELEASE</spring-integration-java-dsl.version>
 		<spring-session.version>1.0.2.RELEASE</spring-session.version>
 		<super-csv.version>2.3.1</super-csv.version>
@@ -155,6 +156,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-config-server</artifactId>
+				<version>${spring-cloud-config-server.version}</version>
 				<exclusions>
 					<exclusion>
 						<artifactId>svnkit</artifactId>
