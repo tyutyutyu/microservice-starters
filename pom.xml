@@ -10,7 +10,7 @@
 
 	<groupId>hu.bankmonitor</groupId>
 	<artifactId>microservice-starters</artifactId>
-	<version>0.0.20</version>
+	<version>0.0.21-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Microservice Starters Parent</name>
@@ -23,7 +23,7 @@
 		<connection>scm:git:http://foldhazii@stash.arthus.hu/scm/cod/microservice-starters.git</connection>
 		<developerConnection>scm:git:ssh://git@gitlabhq01.arthus.local:7999/cod/microservice-starters.git</developerConnection>
 		<url>http://stash.arthus.hu/projects/COD/repos/microservice-starters/browse</url>
-		<tag>0.0.20</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
@@ -52,7 +52,7 @@
 		<sonar-maven-plugin.version>2.6</sonar-maven-plugin.version>
 		<spring-boot-maven-plugin.version>1.2.5.RELEASE</spring-boot-maven-plugin.version>
 
-		<microservice-starters.version>0.0.20</microservice-starters.version>
+		<microservice-starters.version>0.0.21-SNAPSHOT</microservice-starters.version>
 		<logback-appenders.version>0.0.8</logback-appenders.version>
 
 		<assertj.version>3.1.0</assertj.version>
