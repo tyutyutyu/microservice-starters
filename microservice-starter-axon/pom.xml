@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>hu.bankmonitor</groupId>
 		<artifactId>microservice-starters</artifactId>
-		<version>0.0.22</version>
+		<version>0.0.23-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>microservice-starter-axon</artifactId>
