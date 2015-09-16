@@ -15,10 +15,4 @@ public class BankmonitorSSLTCPNetSyslogConfig extends SSLTCPNetSyslogConfig {
 		return BankmonitorSSLTCPNetSyslog.class;
 	}
 
-	@Override
-	public Class<?> getSyslogWriterClass() {
-
-		return BankmonitorSSLTCPNetSyslogWriter.class;
-	}
-
 }
