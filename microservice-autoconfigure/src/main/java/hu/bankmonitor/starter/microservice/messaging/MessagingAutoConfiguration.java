@@ -7,8 +7,6 @@ import hu.bankmonitor.starter.microservice.messaging.EventClassFinderConfigurati
 
 import javax.annotation.PostConstruct;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.BindingBuilder;
@@ -28,6 +26,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+import lombok.extern.slf4j.Slf4j;
+
 @ConditionalOnClass({ RabbitAdmin.class })
 @Configuration
 @EnableConfigurationProperties(MessagingProperties.class)
@@ -36,14 +36,37 @@ import org.springframework.context.annotation.Import;
 @SuppressWarnings("static-method")
 public class MessagingAutoConfiguration {
 
-	@Autowired
-	private MessagingProperties properties;
+	@Configuration
+	public static class RabbitListenerConfigurerImpl implements RabbitListenerConfigurer {
+
+		@Autowired
+		ConnectionFactory connectionFactory;
+
+		@Autowired
+		Jackson2JsonMessageConverter messageConverter;
+
+		@Override
+		public void configureRabbitListeners(RabbitListenerEndpointRegistrar registrar) {
+
+			SimpleRabbitListenerContainerFactory containerFactory = new SimpleRabbitListenerContainerFactory();
+			containerFactory.setConnectionFactory(connectionFactory);
+			containerFactory.setMessageConverter(messageConverter);
+
+			// Hogy újra lehessen küldeni az üzeneteket többször is az EventStore-ból
+			containerFactory.setAcknowledgeMode(AcknowledgeMode.NONE);
+
+			registrar.setContainerFactory(containerFactory);
+		}
+	}
 
 	@Autowired
 	private AmqpAdmin amqpAdmin;
 
 	@Autowired
 	private EventClassFinder eventClassFinder;
+
+	@Autowired
+	private MessagingProperties properties;
 
 	@PostConstruct
 	void init() {
@@ -117,28 +140,10 @@ public class MessagingAutoConfiguration {
 		return new MessageService();
 	}
 
-	@Configuration
-	public static class RabbitListenerConfigurerImpl implements RabbitListenerConfigurer {
+	@Bean
+	MicroserviceStarterMessagePostProcessor messagePostProcessor() {
 
-		@Autowired
-		ConnectionFactory connectionFactory;
-
-		@Autowired
-		Jackson2JsonMessageConverter messageConverter;
-
-		@Override
-		public void configureRabbitListeners(RabbitListenerEndpointRegistrar registrar) {
-
-			SimpleRabbitListenerContainerFactory containerFactory = new SimpleRabbitListenerContainerFactory();
-			containerFactory.setConnectionFactory(connectionFactory);
-			containerFactory.setMessageConverter(messageConverter);
-
-			// Hogy újra lehessen küldeni az üzeneteket többször is az EventStore-ból
-			containerFactory.setAcknowledgeMode(AcknowledgeMode.NONE);
-
-			registrar.setContainerFactory(containerFactory);
-		}
-
+		return new MicroserviceStarterMessagePostProcessor(properties.getApplicationName());
 	}
 
 }
