@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>hu.bankmonitor</groupId>
 		<artifactId>microservice-starters</artifactId>
-		<version>0.0.24</version>
+		<version>0.0.25-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>microservice-starter-admin-client</artifactId>
