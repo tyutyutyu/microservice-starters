@@ -22,7 +22,7 @@
 
 	<scm>
 		<connection>scm:git:https://github.com/Bankmonitor/microservice-starters.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:Bankmonitor/microservice-starters.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:Bankmonitor/microservice-starters.git</developerConnection>
 		<url>https://github.com/Bankmonitor/microservice-starters</url>
 		<tag>HEAD</tag>
 	</scm>
