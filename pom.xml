@@ -29,15 +29,9 @@
 
 	<distributionManagement>
 		<repository>
-			<id>gitlabhq01-releases</id>
-			<name>gitlabhq01-releases</name>
-			<url>http://artifactory.arthus.local/artifactory/libs-release-local</url>
+			<id>bintray</id>
+			<url>https://api.bintray.com/maven/bankmonitor/hu.bankmonitor.commons/interspire4j</url>
 		</repository>
-		<snapshotRepository>
-			<id>gitlabhq01-snapshots</id>
-			<name>gitlabhq01-snapshots</name>
-			<url>http://artifactory.arthus.local/artifactory/libs-snapshot-local</url>
-		</snapshotRepository>
 	</distributionManagement>
 
 	<properties>
@@ -530,6 +524,16 @@
 								</configuration>
 							</execution>
 						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
 					</plugin>
 				</plugins>
 			</build>
