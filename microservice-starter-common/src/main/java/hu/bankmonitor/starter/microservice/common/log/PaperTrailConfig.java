@@ -1,20 +1,17 @@
 package hu.bankmonitor.starter.microservice.common.log;
 
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.classic.PatternLayout;
+import ch.qos.logback.classic.spi.ILoggingEvent;
 import com.papertrailapp.logback.Syslog4jAppender;
-
 import javax.annotation.PostConstruct;
-
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import ch.qos.logback.classic.Logger;
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.classic.PatternLayout;
-import ch.qos.logback.classic.spi.ILoggingEvent;
-import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @Slf4j
@@ -23,6 +20,9 @@ public class PaperTrailConfig {
 	@Autowired(required = false)
 	private PaperTrailProperties properties;
 
+	/**
+	 * Register the PaperTrail log appander if the appropriate properties exist.
+	 */
 	@PostConstruct
 	void init() {
 

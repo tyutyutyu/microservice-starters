@@ -2,11 +2,9 @@ package hu.bankmonitor.starter.microservice.messaging;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
-
 import hu.bankmonitor.starter.microservice.messaging.EventClassFinderConfiguration.EventClassFinder;
-
 import javax.annotation.PostConstruct;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.BindingBuilder;
@@ -25,8 +23,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-
-import lombok.extern.slf4j.Slf4j;
 
 @ConditionalOnClass({ RabbitAdmin.class })
 @Configuration
@@ -52,7 +48,7 @@ public class MessagingAutoConfiguration {
 			containerFactory.setConnectionFactory(connectionFactory);
 			containerFactory.setMessageConverter(messageConverter);
 
-			// Hogy újra lehessen küldeni az üzeneteket többször is az EventStore-ból
+			// For resending messages from the EventStore
 			containerFactory.setAcknowledgeMode(AcknowledgeMode.NONE);
 
 			registrar.setContainerFactory(containerFactory);
@@ -78,7 +74,7 @@ public class MessagingAutoConfiguration {
 	}
 
 	/**
-	 * Az alkalmazás queue-ja, ebből olvassa ki az alkalmazás a számára fontos üzeneteket
+	 * The application's queue
 	 *
 	 * @return
 	 */
@@ -89,7 +85,7 @@ public class MessagingAutoConfiguration {
 	}
 
 	/**
-	 * A közös exchange, ahova minden service küldi az event-eket
+	 * The common exchange
 	 *
 	 * @return
 	 */

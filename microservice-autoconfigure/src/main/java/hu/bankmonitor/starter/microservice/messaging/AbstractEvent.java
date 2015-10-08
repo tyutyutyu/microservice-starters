@@ -1,13 +1,18 @@
 package hu.bankmonitor.starter.microservice.messaging;
 
 import java.util.UUID;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-@EqualsAndHashCode
+/**
+ * RabbitMQ message class' super class.
+ *
+ * @author istvan.foldhazi
+ *
+ */
 @Getter
+@EqualsAndHashCode(of = "id")
 @ToString
 public abstract class AbstractEvent {
 

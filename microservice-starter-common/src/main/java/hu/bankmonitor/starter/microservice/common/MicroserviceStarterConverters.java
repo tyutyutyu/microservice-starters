@@ -1,12 +1,11 @@
 package hu.bankmonitor.starter.microservice.common;
 
 import java.util.Date;
-
 import org.joda.time.LocalDate;
 import org.springframework.core.convert.converter.Converter;
 
 /**
- * Wrapper osztály Spring-es konverterekhez.
+ * Wrapper class for Spring converters
  *
  * @author istvan.foldhazi
  *

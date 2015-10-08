@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -16,19 +15,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class MessagingProperties {
 
 	/**
-	 * Az alkalmazás neve, ami majd megjelenik az üzenetekben
+	 * The application's name. This is added to all messages.
 	 */
 	@Value("${spring.application.name}")
 	private String applicationName;
 
-	/**
-	 * Az alkalmazás queue-jának a neve
-	 */
 	private String queueName;
 
-	/**
-	 * A közös exchange neve
-	 */
 	private String exchangeName;
 
 }

@@ -3,14 +3,19 @@ package hu.bankmonitor.starter.microservice.common.log;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public final class LogUtils {
 
+	/**
+	 * Create developer friendly log message from the {@link HttpServletRequest}.
+	 *
+	 * @param request The request to convert
+	 * 
+	 * @return The message
+	 */
 	public static String log(HttpServletRequest request) {
 
 		StringBuffer sb = new StringBuffer();
@@ -18,6 +23,7 @@ public final class LogUtils {
 		for (Object n : Collections.list(request.getHeaderNames())) {
 			sb.append("\nHeader     :").append(n).append("=").append(request.getHeader(n.toString()));
 		}
+
 		for (Object e : request.getParameterMap().entrySet()) {
 			Map.Entry<?, ?> entry = (Map.Entry<?, ?>) e;
 			if (entry.getValue() instanceof String[]) {

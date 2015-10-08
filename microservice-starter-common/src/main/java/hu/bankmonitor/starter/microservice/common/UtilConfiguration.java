@@ -11,7 +11,7 @@ import org.springframework.core.convert.support.GenericConversionService;
 public class UtilConfiguration {
 
 	/**
-	 * A {@link ConfigurationProperties} osztályoknál szükséges ez a {@link ConversionService} az extra {@link Converter}-ekhez.
+	 * Register {@link Converter}-s for {@link ConfigurationProperties} classes in {@link ConversionService}.
 	 *
 	 * @return A ConversionService
 	 */

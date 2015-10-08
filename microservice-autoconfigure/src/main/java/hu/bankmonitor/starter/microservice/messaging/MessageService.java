@@ -1,11 +1,10 @@
 package hu.bankmonitor.starter.microservice.messaging;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MessageService {
@@ -17,10 +16,9 @@ public class MessageService {
 	private RabbitTemplate rabbitTemplate;
 
 	/**
-	 * Üzenet küldése a RabbitMQ felé
+	 * Sends message to RabbitMQ
 	 *
-	 * @param event
-	 *            Az üzenet
+	 * @param event The message
 	 */
 	public void send(AbstractEvent event) {
 
@@ -28,12 +26,11 @@ public class MessageService {
 	}
 
 	/**
-	 * Üzenet küldése a RabbitMQ felé
+	 * Sends message to RabbitMQ
 	 *
-	 * @param payload
-	 *            Az üzenet
-	 * @param identifier
-	 *            Egyedi üzenet azonosító
+	 * @param payload The message
+	 *
+	 * @param identifier The message's identifier
 	 */
 	public void send(Object payload, String identifier) {
 

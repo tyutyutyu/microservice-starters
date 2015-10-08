@@ -3,17 +3,14 @@ package hu.bankmonitor.starter.microservice.messaging;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.filter.AssignableTypeFilter;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ReflectionUtils;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @Slf4j
@@ -27,7 +24,12 @@ public class EventClassFinderConfiguration {
 
 	}
 
-	@ConditionalOnMissingClass(name = "org.axonframework.eventhandling.annotation.EventHandler")
+	/**
+	 * Finds the RammitMQ message class' in the project.
+	 *
+	 * @author istvan.foldhazi
+	 *
+	 */
 	@Configuration
 	public static class RabbitEventClassFinderConfiguration {
 

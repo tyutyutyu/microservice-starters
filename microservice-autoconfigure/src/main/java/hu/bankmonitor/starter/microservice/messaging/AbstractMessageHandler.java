@@ -1,12 +1,17 @@
 package hu.bankmonitor.starter.microservice.messaging;
 
 import java.lang.reflect.InvocationTargetException;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 
-import lombok.extern.slf4j.Slf4j;
-
+/**
+ * RabbitMQ message handler services' super class.
+ *
+ *
+ * @author istvan.foldhazi
+ *
+ */
 @Slf4j
 public abstract class AbstractMessageHandler {
 

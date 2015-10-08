@@ -8,9 +8,9 @@ public class CommonConfiguration {
 
 	@Bean
 	@SuppressWarnings("static-method")
-	ProfileReporter profileReporter() {
+	ProfileLogger profileReporter() {
 
-		return new ProfileReporter();
+		return new ProfileLogger();
 	}
 
 }

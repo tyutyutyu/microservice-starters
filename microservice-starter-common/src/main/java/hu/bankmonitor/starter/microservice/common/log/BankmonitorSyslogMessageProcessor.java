@@ -11,6 +11,9 @@ public class BankmonitorSyslogMessageProcessor extends SyslogMessageProcessor {
 
 	private static final String CUSTOM_LOCAL_NAME_KEY = "CUSTOM_LOCAL_NAME";
 
+	/**
+	 * Override the original local name with the CUSTOM_LOCAL_NAME system property if it is exists.
+	 */
 	@Override
 	public String createSyslogHeader(int facility, int level, boolean sendLocalTimestamp, boolean sendLocalName) {
 
