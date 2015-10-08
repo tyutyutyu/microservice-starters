@@ -502,7 +502,7 @@
 						<artifactId>maven-source-plugin</artifactId>
 						<version>${maven-source-plugin.version}</version>
 						<configuration>
-							<skip>true</skip>
+							<skip>false</skip>
 						</configuration>
 						<executions>
 							<execution>
@@ -519,7 +519,7 @@
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<version>${maven-javadoc-plugin.version}</version>
 						<configuration>
-							<skip>true</skip>
+							<skip>false</skip>
 						</configuration>
 						<executions>
 							<execution>
