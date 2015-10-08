@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>hu.bankmonitor</groupId>
+		<groupId>hu.bankmonitor.commons</groupId>
 		<artifactId>microservice-starters</artifactId>
 		<version>0.0.27-SNAPSHOT</version>
 	</parent>
@@ -27,11 +27,11 @@
 
 		<!-- MICROSERVICE STARTER -->
 		<dependency>
-			<groupId>hu.bankmonitor</groupId>
+			<groupId>hu.bankmonitor.commons</groupId>
 			<artifactId>microservice-starter-common</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>hu.bankmonitor</groupId>
+			<groupId>hu.bankmonitor.commons</groupId>
 			<artifactId>microservice-autoconfigure</artifactId>
 		</dependency>
 

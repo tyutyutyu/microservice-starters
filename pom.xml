@@ -110,17 +110,17 @@
 			</dependency>
 
 			<dependency>
-				<groupId>hu.bankmonitor</groupId>
+				<groupId>hu.bankmonitor.commons</groupId>
 				<artifactId>microservice-starter-common</artifactId>
 				<version>${microservice-starters.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>hu.bankmonitor</groupId>
+				<groupId>hu.bankmonitor.commons</groupId>
 				<artifactId>microservice-autoconfigure</artifactId>
 				<version>${microservice-starters.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>hu.bankmonitor</groupId>
+				<groupId>hu.bankmonitor.commons</groupId>
 				<artifactId>microservice-starter-messaging</artifactId>
 				<version>${microservice-starters.version}</version>
 			</dependency>
