@@ -8,7 +8,7 @@
 		<version>1.2.6.RELEASE</version>
 	</parent>
 
-	<groupId>hu.bankmonitor</groupId>
+	<groupId>hu.bankmonitor.commons</groupId>
 	<artifactId>microservice-starters</artifactId>
 	<version>0.0.27-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -20,9 +20,9 @@
 	</prerequisites>
 
 	<scm>
-		<connection>scm:git:http://foldhazii@stash.arthus.hu/scm/cod/microservice-starters.git</connection>
-		<developerConnection>scm:git:ssh://git@gitlabhq01.arthus.local:7999/cod/microservice-starters.git</developerConnection>
-		<url>http://stash.arthus.hu/projects/COD/repos/microservice-starters/browse</url>
+		<connection>scm:git:https://github.com/Bankmonitor/microservice-starters.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:Bankmonitor/microservice-starters.git</developerConnection>
+		<url>https://github.com/Bankmonitor/microservice-starters</url>
 		<tag>HEAD</tag>
 	</scm>
 
