@@ -20,7 +20,7 @@ public class ProfileLogger {
 		if (env.getActiveProfiles().length == 0) {
 			log.warn("No Spring profile configured, running with default configuration");
 		} else {
-			log.info("Running with Spring profile(s): {}", (Object[]) env.getActiveProfiles());
+			log.info("Running with Spring profile(s): {}", (Object) env.getActiveProfiles());
 		}
 	}
 
