@@ -8,10 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import net.kencochrane.raven.logback.SentryAppender;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.util.StringUtils;
 
 @Configuration
 @Slf4j
@@ -22,8 +22,8 @@ public class SentryConfig {
 	@Autowired
 	private Environment env;
 
-	@Value("${application.sentryDsn:}")
-	private String dsn;
+	@Autowired(required = false)
+	private SentryProperties properties;
 
 	/**
 	 * Register the Sentry log appander if the appropriate properties exist.
@@ -31,9 +31,9 @@ public class SentryConfig {
 	@PostConstruct
 	public void init() {
 
-		if (!StringUtils.isEmpty(dsn)) {
+		if (properties != null) {
 
-			log.info("Init Sentry appender with dsn: {}", dsn);
+			log.info("Init Sentry appender with dsn: {}", properties.getDsn());
 
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 
@@ -41,7 +41,7 @@ public class SentryConfig {
 			sentryAppender.setName("SENTRY_APPENDER");
 			sentryAppender.setContext(loggerContext);
 
-			sentryAppender.setDsn(dsn);
+			sentryAppender.setDsn(properties.getDsn());
 
 			ThresholdFilter thresholdFilter = new ThresholdFilter();
 			thresholdFilter.setLevel("ERROR");
@@ -59,6 +59,14 @@ public class SentryConfig {
 				log.debug("No Sentry dsn.");
 			}
 		}
+	}
+
+	@Bean
+	@ConditionalOnProperty(prefix = "application.sentry", name = { "dsn" })
+	@SuppressWarnings("static-method")
+	SentryProperties properties() {
+
+		return new SentryProperties();
 	}
 
 }
