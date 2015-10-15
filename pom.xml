@@ -35,12 +35,12 @@
 	</distributionManagement>
 
 	<properties>
-		<duplicate-finder-maven-plugin.version>1.2.0</duplicate-finder-maven-plugin.version>
-		<lombok-maven-plugin.version>1.16.4.1</lombok-maven-plugin.version>
-		<maven-enforcer-plugin.version>1.4</maven-enforcer-plugin.version>
+		<duplicate-finder-maven-plugin.version>1.2.1</duplicate-finder-maven-plugin.version>
+		<lombok-maven-plugin.version>1.16.6.1</lombok-maven-plugin.version>
+		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
 		<maven-install-plugin.version>2.3.1</maven-install-plugin.version>
 		<maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
-		<maven-jaxb2-plugin.version>0.12.3</maven-jaxb2-plugin.version>
+		<maven-jaxb2-plugin.version>0.13.0</maven-jaxb2-plugin.version>
 		<maven-release-plugin.version>2.5.2</maven-release-plugin.version>
 		<maven-source-plugin.version>2.4</maven-source-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
@@ -50,20 +50,20 @@
 		<microservice-starters.version>0.0.33-SNAPSHOT</microservice-starters.version>
 		<logback-appenders.version>0.0.8</logback-appenders.version>
 
-		<assertj.version>3.1.0</assertj.version>
+		<assertj.version>3.2.0</assertj.version>
 		<commons-fileupload.version>1.3.1</commons-fileupload.version>
 		<commons-io.version>2.4</commons-io.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
-		<libphonenumber.version>7.0.11</libphonenumber.version>
+		<libphonenumber.version>7.1.0</libphonenumber.version>
 		<log4jdbc-log4j2.version>1.16</log4jdbc-log4j2.version>
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<lombok.version>1.16.6</lombok.version>
-		<poi.version>3.12</poi.version>
+		<poi.version>3.13</poi.version>
 		<raven-logback.version>6.0.0</raven-logback.version>
-		<recaptcha.version>0.0.7</recaptcha.version>
+		<recaptcha.version>0.0.8</recaptcha.version>
 		<spring-cloud-starter-parent.version>Angel.SR3</spring-cloud-starter-parent.version>
 		<spring-cloud-config-server.version>1.0.2.RELEASE</spring-cloud-config-server.version>
-		<spring-integration-java-dsl.version>1.0.2.RELEASE</spring-integration-java-dsl.version>
+		<spring-integration-java-dsl.version>1.1.0.RELEASE</spring-integration-java-dsl.version>
 		<spring-session.version>1.0.2.RELEASE</spring-session.version>
 		<super-csv.version>2.3.1</super-csv.version>
 		<usertype.version>4.0.0.GA</usertype.version>
@@ -180,11 +180,6 @@
 				<groupId>net.kencochrane.raven</groupId>
 				<artifactId>raven-logback</artifactId>
 				<version>${raven-logback.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>net.sf.opencsv</groupId>
-				<artifactId>opencsv</artifactId>
-				<version>${opencsv.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>net.tanesha.recaptcha4j</groupId>
