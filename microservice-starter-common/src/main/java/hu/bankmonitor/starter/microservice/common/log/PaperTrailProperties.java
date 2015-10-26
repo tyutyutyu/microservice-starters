@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "application.paper-trail")
+@ConfigurationProperties(prefix = "microservice-starters.paper-trail")
 @Getter
 @Setter
 public class PaperTrailProperties {

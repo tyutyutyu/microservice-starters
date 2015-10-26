@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "application.sentry")
+@ConfigurationProperties(prefix = "microservice-starters.sentry")
 @Getter
 @Setter
 public class SentryProperties {
