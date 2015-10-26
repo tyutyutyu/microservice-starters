@@ -64,7 +64,7 @@
 		<lombok.version>1.16.6</lombok.version>
 		<poi.version>3.13</poi.version>
 		<raven-logback.version>6.0.0</raven-logback.version>
-		<recaptcha.version>0.0.8</recaptcha.version>
+		<recaptcha4j.version>0.0.7</recaptcha4j.version>
 		<spring-cloud-starter-parent.version>Angel.SR3</spring-cloud-starter-parent.version>
 		<spring-cloud-config-server.version>1.0.3.RELEASE</spring-cloud-config-server.version>
 		<spring-integration-java-dsl.version>1.1.0.RELEASE</spring-integration-java-dsl.version>
@@ -193,7 +193,7 @@
 			<dependency>
 				<groupId>net.tanesha.recaptcha4j</groupId>
 				<artifactId>recaptcha4j</artifactId>
-				<version>${recaptcha.version}</version>
+				<version>${recaptcha4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
