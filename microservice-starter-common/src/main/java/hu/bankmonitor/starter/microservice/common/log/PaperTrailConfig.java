@@ -57,7 +57,7 @@ public class PaperTrailConfig {
 	}
 
 	@Bean
-	@ConditionalOnProperty(prefix = "application.paper-trail", name = { "host", "port" })
+	@ConditionalOnProperty(prefix = "microservice-starters.paper-trail", name = { "host", "port" })
 	@SuppressWarnings("static-method")
 	PaperTrailProperties properties() {
 

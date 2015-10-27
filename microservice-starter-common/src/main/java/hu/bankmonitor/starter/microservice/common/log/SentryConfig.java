@@ -62,7 +62,7 @@ public class SentryConfig {
 	}
 
 	@Bean
-	@ConditionalOnProperty(prefix = "application.sentry", name = { "dsn" })
+	@ConditionalOnProperty(prefix = "microservice-starters.sentry", name = { "dsn" })
 	@SuppressWarnings("static-method")
 	SentryProperties properties() {
 
