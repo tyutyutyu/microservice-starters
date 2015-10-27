@@ -23,7 +23,7 @@ public class SentryConfig {
 	private Environment env;
 
 	@Autowired(required = false)
-	private SentryProperties properties;
+	private SentryProperties sentryProperties;
 
 	/**
 	 * Register the Sentry log appander if the appropriate properties exist.
@@ -31,9 +31,9 @@ public class SentryConfig {
 	@PostConstruct
 	public void init() {
 
-		if (properties != null) {
+		if (sentryProperties != null) {
 
-			log.info("Init Sentry appender with dsn: {}", properties.getDsn());
+			log.info("Init Sentry appender with dsn: {}", sentryProperties.getDsn());
 
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 
@@ -41,7 +41,7 @@ public class SentryConfig {
 			sentryAppender.setName("SENTRY_APPENDER");
 			sentryAppender.setContext(loggerContext);
 
-			sentryAppender.setDsn(properties.getDsn());
+			sentryAppender.setDsn(sentryProperties.getDsn());
 
 			ThresholdFilter thresholdFilter = new ThresholdFilter();
 			thresholdFilter.setLevel("ERROR");
@@ -64,7 +64,7 @@ public class SentryConfig {
 	@Bean
 	@ConditionalOnProperty(prefix = "microservice-starters.sentry", name = { "dsn" })
 	@SuppressWarnings("static-method")
-	SentryProperties properties() {
+	SentryProperties sentryProperties() {
 
 		return new SentryProperties();
 	}

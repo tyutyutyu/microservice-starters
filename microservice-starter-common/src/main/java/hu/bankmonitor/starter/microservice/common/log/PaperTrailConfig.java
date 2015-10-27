@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 public class PaperTrailConfig {
 
 	@Autowired(required = false)
-	private PaperTrailProperties properties;
+	private PaperTrailProperties paperTrailProperties;
 
 	/**
 	 * Register the PaperTrail log appander if the appropriate properties exist.
@@ -26,8 +26,8 @@ public class PaperTrailConfig {
 	@PostConstruct
 	void init() {
 
-		if (properties != null) {
-			log.info("Init Paper Trail appender with Ident: {}, Local name: {}", properties().getIdent(), BankmonitorSyslogMessageProcessor.getLocalName());
+		if (paperTrailProperties != null) {
+			log.info("Init Paper Trail appender with Ident: {}, Local name: {}", paperTrailProperties().getIdent(), BankmonitorSyslogMessageProcessor.getLocalName());
 
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 
@@ -36,15 +36,15 @@ public class PaperTrailConfig {
 			syslog4jAppender.setContext(loggerContext);
 			PatternLayout layout = new PatternLayout();
 			layout.setContext(loggerContext);
-			layout.setPattern(properties.getPattern());
+			layout.setPattern(paperTrailProperties.getPattern());
 			layout.start();
 			syslog4jAppender.setLayout(layout);
 
 			BankmonitorSSLTCPNetSyslogConfig syslogConfig = new BankmonitorSSLTCPNetSyslogConfig();
-			syslogConfig.setHost(properties.getHost());
-			syslogConfig.setPort(properties.getPort());
-			syslogConfig.setIdent(properties.getIdent());
-			syslogConfig.setMaxMessageLength(properties.getMaxMessageLength());
+			syslogConfig.setHost(paperTrailProperties.getHost());
+			syslogConfig.setPort(paperTrailProperties.getPort());
+			syslogConfig.setIdent(paperTrailProperties.getIdent());
+			syslogConfig.setMaxMessageLength(paperTrailProperties.getMaxMessageLength());
 			syslog4jAppender.setSyslogConfig(syslogConfig);
 
 			syslog4jAppender.start();
@@ -59,7 +59,7 @@ public class PaperTrailConfig {
 	@Bean
 	@ConditionalOnProperty(prefix = "microservice-starters.paper-trail", name = { "host", "port" })
 	@SuppressWarnings("static-method")
-	PaperTrailProperties properties() {
+	PaperTrailProperties paperTrailProperties() {
 
 		return new PaperTrailProperties();
 	}
