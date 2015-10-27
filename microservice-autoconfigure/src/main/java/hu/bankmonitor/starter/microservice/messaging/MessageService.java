@@ -18,7 +18,8 @@ public class MessageService {
 	/**
 	 * Sends message to RabbitMQ
 	 *
-	 * @param event The message
+	 * @param event
+	 *            The message
 	 */
 	public void send(AbstractEvent event) {
 
@@ -28,9 +29,11 @@ public class MessageService {
 	/**
 	 * Sends message to RabbitMQ
 	 *
-	 * @param payload The message
+	 * @param payload
+	 *            The message
 	 *
-	 * @param identifier The message's identifier
+	 * @param identifier
+	 *            The message's identifier
 	 */
 	public void send(Object payload, String identifier) {
 
@@ -41,4 +44,21 @@ public class MessageService {
 		rabbitTemplate.convertAndSend(routingKey, payload, messagePostProcessor, new CorrelationData(identifier));
 	}
 
+	/**
+	 * Sends message to RabbitMQ and waits for response
+	 *
+	 * @param payload
+	 *            The message
+	 * @return response from RabbitMQ
+	 *
+	 */
+	public Object sendAndReceive(Object payload) {
+
+		String routingKey = payload.getClass().getCanonicalName();
+
+		log.debug("Sending message - routingKey: {}, payload: {}", routingKey, payload);
+
+		return rabbitTemplate.convertSendAndReceive(routingKey, payload, messagePostProcessor);
+
+	}
 }
