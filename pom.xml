@@ -35,6 +35,8 @@
 	</distributionManagement>
 
 	<properties>
+		<disable.checks>true</disable.checks>
+
 		<duplicate-finder-maven-plugin.version>1.2.1</duplicate-finder-maven-plugin.version>
 		<lombok-maven-plugin.version>1.16.6.1</lombok-maven-plugin.version>
 		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
