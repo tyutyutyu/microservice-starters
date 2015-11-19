@@ -66,8 +66,8 @@
 		<poi.version>3.13</poi.version>
 		<raven-logback.version>6.0.0</raven-logback.version>
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
-		<spring-cloud-starter-parent.version>Angel.SR3</spring-cloud-starter-parent.version>
-		<spring-cloud-config-server.version>1.0.3.RELEASE</spring-cloud-config-server.version>
+		<spring-cloud-starter-parent.version>Brixton.M3</spring-cloud-starter-parent.version>
+		<spring-cloud-config-server.version>1.1.0.M3</spring-cloud-config-server.version>
 		<spring-integration-java-dsl.version>1.1.1.RELEASE</spring-integration-java-dsl.version>
 		<spring-session.version>1.0.2.RELEASE</spring-session.version>
 		<super-csv.version>2.4.0</super-csv.version>
@@ -85,6 +85,14 @@
 			<id>repo.spring.io-releases</id>
 			<name>repo.spring.io-releases</name>
 			<url>http://repo.spring.io/release</url>
+		</repository>
+		<repository>
+			<id>repo.spring.io-milestone</id>
+			<name>repo.spring.io-milestone</name>
+			<url>http://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</repository>
 
 		<repository>
