@@ -329,15 +329,25 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin.version}</version>
 					<configuration>
-						<includes>
-							<include>**/*Test.java</include>
-						</includes>
-						<excludes>
-							<exclude>**/Abstract*.java</exclude>
-						</excludes>
 						<argLine>-Xmx1024m</argLine>
 					</configuration>
 					<executions>
+						<execution>
+							<id>test</id>
+							<goals>
+								<goal>test</goal>
+							</goals>
+							<phase>test</phase>
+							<configuration>
+								<excludes>
+									<exclude>**/Abstract*.java</exclude>
+									<exclude>**/*IT.java</exclude>
+								</excludes>
+								<includes>
+									<include>**/*Test.java</include>
+								</includes>
+							</configuration>
+						</execution>
 						<execution>
 							<id>integration-test</id>
 							<goals>
@@ -346,6 +356,7 @@
 							<phase>integration-test</phase>
 							<configuration>
 								<excludes>
+									<exclude>**/Abstract*.java</exclude>
 									<exclude>**/*Test.java</exclude>
 								</excludes>
 								<includes>
