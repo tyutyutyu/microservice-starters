@@ -17,6 +17,7 @@ import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -27,7 +28,7 @@ import org.springframework.context.annotation.Import;
 @ConditionalOnClass({ RabbitAdmin.class })
 @Configuration
 @EnableConfigurationProperties(MessagingProperties.class)
-@Import({ EventClassFinderConfiguration.class, RpcServiceConfiguration.class })
+@Import({ EventClassFinderConfiguration.class })
 @Slf4j
 @SuppressWarnings("static-method")
 public class MessagingAutoConfiguration {
@@ -39,7 +40,7 @@ public class MessagingAutoConfiguration {
 		ConnectionFactory connectionFactory;
 
 		@Autowired
-		Jackson2JsonMessageConverter messageConverter;
+		MessageConverter messageConverter;
 
 		@Override
 		public void configureRabbitListeners(RabbitListenerEndpointRegistrar registrar) {
@@ -95,17 +96,17 @@ public class MessagingAutoConfiguration {
 		return new TopicExchange(properties.getExchangeName(), true, false);
 	}
 
-	@Bean
-	EventClassFinderConfiguration listenerFinderService() {
-
-		return new EventClassFinderConfiguration();
-	}
-
 	// @Bean
-	// RpcServiceConfiguration rpcServiceConfiguration() {
+	// EventClassFinderConfiguration listenerFinderService() {
 	//
-	// return new RpcServiceConfiguration();
+	// return new EventClassFinderConfiguration();
 	// }
+
+	@Bean
+	RpcServiceConfiguration rpcServiceConfiguration() {
+
+		return new RpcServiceConfiguration();
+	}
 
 	private void createBindings() {
 
@@ -115,7 +116,7 @@ public class MessagingAutoConfiguration {
 	}
 
 	@Bean
-	Jackson2JsonMessageConverter messageConverter() {
+	MessageConverter messageConverter() {
 
 		Jackson2JsonMessageConverter messageConverter = new Jackson2JsonMessageConverter();
 		ObjectMapper jsonObjectMapper = new ObjectMapper();
