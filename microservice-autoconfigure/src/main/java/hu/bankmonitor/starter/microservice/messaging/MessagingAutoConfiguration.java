@@ -96,12 +96,6 @@ public class MessagingAutoConfiguration {
 		return new TopicExchange(properties.getExchangeName(), true, false);
 	}
 
-	// @Bean
-	// EventClassFinderConfiguration listenerFinderService() {
-	//
-	// return new EventClassFinderConfiguration();
-	// }
-
 	@Bean
 	RpcServiceConfiguration rpcServiceConfiguration() {
 
