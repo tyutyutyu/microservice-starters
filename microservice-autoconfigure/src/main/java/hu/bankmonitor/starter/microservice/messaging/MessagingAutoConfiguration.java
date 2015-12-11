@@ -27,7 +27,7 @@ import org.springframework.context.annotation.Import;
 @ConditionalOnClass({ RabbitAdmin.class })
 @Configuration
 @EnableConfigurationProperties(MessagingProperties.class)
-@Import(EventClassFinderConfiguration.class)
+@Import({ EventClassFinderConfiguration.class, RpcServiceConfiguration.class })
 @Slf4j
 @SuppressWarnings("static-method")
 public class MessagingAutoConfiguration {
@@ -100,6 +100,12 @@ public class MessagingAutoConfiguration {
 
 		return new EventClassFinderConfiguration();
 	}
+
+	// @Bean
+	// RpcServiceConfiguration rpcServiceConfiguration() {
+	//
+	// return new RpcServiceConfiguration();
+	// }
 
 	private void createBindings() {
 
