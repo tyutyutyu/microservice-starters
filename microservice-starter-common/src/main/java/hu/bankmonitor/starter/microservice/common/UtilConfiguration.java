@@ -10,11 +10,6 @@ import org.springframework.core.convert.support.GenericConversionService;
 @Configuration
 public class UtilConfiguration {
 
-	/**
-	 * Register {@link Converter}-s for {@link ConfigurationProperties} classes in {@link ConversionService}.
-	 *
-	 * @return A ConversionService
-	 */
 	@Bean(name = ConfigurableApplicationContext.CONVERSION_SERVICE_BEAN_NAME)
 	@SuppressWarnings("static-method")
 	public ConversionService conversionService() {
