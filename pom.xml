@@ -11,7 +11,7 @@
 
 	<groupId>hu.bankmonitor.commons</groupId>
 	<artifactId>microservice-starters</artifactId>
-	<version>0.1.2</version>
+	<version>0.1.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Microservice Starters Parent</name>
@@ -24,7 +24,7 @@
 		<connection>scm:git:https://github.com/Bankmonitor/microservice-starters.git</connection>
 		<developerConnection>scm:git:git@github.com:Bankmonitor/microservice-starters.git</developerConnection>
 		<url>https://github.com/Bankmonitor/microservice-starters</url>
-		<tag>0.1.2</tag>
+		<tag>spring-boot-1.2.7</tag>
 	</scm>
 
 	<distributionManagement>
@@ -47,7 +47,7 @@
 		<sonar-maven-plugin.version>2.7</sonar-maven-plugin.version>
 		<spring-boot-maven-plugin.version>1.2.7.RELEASE</spring-boot-maven-plugin.version>
 
-		<microservice-starters.version>0.1.2</microservice-starters.version>
+		<microservice-starters.version>0.1.2-SNAPSHOT</microservice-starters.version>
 		<logback-appenders.version>0.0.8</logback-appenders.version>
 
 		<assertj.version>3.2.0</assertj.version>
