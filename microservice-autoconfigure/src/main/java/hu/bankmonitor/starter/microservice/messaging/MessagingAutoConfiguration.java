@@ -20,6 +20,7 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -86,6 +87,18 @@ public class MessagingAutoConfiguration {
 	}
 
 	/**
+	 * The application's rpc queue
+	 *
+	 * @return
+	 */
+	@Bean
+	@ConditionalOnProperty("application.messaging.rpc-queue-name")
+	Queue rpcQueue() {
+
+		return new Queue(properties.getRpcQueueName(), true, false, false);
+	}
+
+	/**
 	 * The common exchange
 	 *
 	 * @return
@@ -95,6 +108,12 @@ public class MessagingAutoConfiguration {
 
 		return new TopicExchange(properties.getExchangeName(), true, false);
 	}
+
+	// @Bean
+	// EventClassFinderConfiguration listenerFinderService() {
+	//
+	// return new EventClassFinderConfiguration();
+	// }
 
 	@Bean
 	RpcServiceConfiguration rpcServiceConfiguration() {

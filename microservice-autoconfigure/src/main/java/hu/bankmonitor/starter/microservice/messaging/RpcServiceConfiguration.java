@@ -79,6 +79,7 @@ public class RpcServiceConfiguration {
 				amqpProxyFactoryBuilder.addPropertyValue("serviceInterface", serviceClass);
 				amqpProxyFactoryBuilder.addDependsOn("rabbitTemplate");
 				amqpProxyFactoryBuilder.addPropertyReference("amqpTemplate", "rabbitTemplate");
+				amqpProxyFactoryBuilder.addPropertyValue("routingKey", serviceClass.getName());
 				registry.registerBeanDefinition(proxyName, amqpProxyFactoryBuilder.getBeanDefinition());
 				log.debug("registerRpcClients - {} with name {} was registered.", amqpProxyFactoryBuilder.getBeanDefinition().getBeanClassName(), proxyName);
 
@@ -86,13 +87,13 @@ public class RpcServiceConfiguration {
 				log.error("amqp proxy service cannot be created :{}", bd.getBeanClassName());
 			}
 
-			amqpAdmin.declareBinding(BindingBuilder.bind(new Queue(properties.getQueueName())).to(new DirectExchange(properties.getExchangeName())).with(""));
 		}
+		// amqpAdmin.declareBinding(BindingBuilder.bind(new Queue(properties.getRpcQueueName())).to(new DirectExchange(properties.getExchangeName())).with(""));
 	}
 
 	private void registerRpcServers() {
 
-		log.debug("registerRpcServers - rpcServices: {}", rpcServices);
+		// log.debug("registerRpcServers - rpcServices: {}", rpcServices);
 
 		if (rpcServices != null) {
 			for (RpcService rpcService : rpcServices) {
@@ -111,13 +112,14 @@ public class RpcServiceConfiguration {
 				messageListenerContainerBuilder.addPropertyValue("connectionFactory", connectionFactory);
 				messageListenerContainerBuilder.addPropertyReference("messageListener", beanName);
 				messageListenerContainerBuilder.addPropertyValue("messageConverter", messageConverter);
-				messageListenerContainerBuilder.addPropertyValue("queueNames", properties.getQueueName());
+				messageListenerContainerBuilder.addPropertyValue("queueNames", properties.getRpcQueueName());
 				registry.registerBeanDefinition(rpcServiceInterface.getName() + AMQP_LISTENER_SUFFIX, messageListenerContainerBuilder.getBeanDefinition());
 
 				log.debug("registerRpcServers - {} with name {} was registered.", amqpServiceExporterBuilder.getBeanDefinition().getBeanClassName(), beanName);
+				amqpAdmin.declareBinding(BindingBuilder.bind(new Queue(properties.getRpcQueueName())).to(new DirectExchange(properties.getExchangeName()))
+						.with(rpcServiceInterface.getName()));
 			}
 
-			amqpAdmin.declareBinding(BindingBuilder.bind(new Queue(properties.getQueueName())).to(new DirectExchange(properties.getExchangeName())).with(""));
 		}
 	}
 

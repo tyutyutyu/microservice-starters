@@ -24,4 +24,5 @@ public class MessagingProperties {
 
 	private String exchangeName;
 
+	private String rpcQueueName;
 }
