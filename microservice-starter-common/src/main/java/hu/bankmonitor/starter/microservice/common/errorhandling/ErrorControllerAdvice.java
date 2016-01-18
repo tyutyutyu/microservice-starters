@@ -27,9 +27,9 @@ public class ErrorControllerAdvice {
 	@ExceptionHandler(UnsatisfiedServletRequestParameterException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@SuppressWarnings("static-method")
-	public String handleThrowable(HttpServletRequest request, UnsatisfiedServletRequestParameterException e) {
+	public String handleUnsatisfiedServletRequestParameterException(HttpServletRequest request, UnsatisfiedServletRequestParameterException e) {
 
-		LogUtils.logException(log, "handleThrowable", request, e);
+		LogUtils.logException(log, "handleUnsatisfiedServletRequestParameterException", request, e);
 
 		return "errors/500";
 	}
@@ -46,10 +46,20 @@ public class ErrorControllerAdvice {
 	}
 
 	@ExceptionHandler(BankmonitorException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@SuppressWarnings("static-method")
+	public String handleBankmonitorException(HttpServletRequest request, BankmonitorException e) {
+
+		LogUtils.logException(log, "handleBankmonitorException", request, e);
+
+		return "errors/500";
+	}
+
+	@ExceptionHandler(BankmonitorRestException.class)
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	@SuppressWarnings("static-method")
-	public RestErrorMessage handleBankmonitorException(HttpServletRequest request, BankmonitorException e) {
+	public RestErrorMessage handleBankmonitorRestException(HttpServletRequest request, BankmonitorRestException e) {
 
 		LogUtils.logException(log, "handleBankmonitorException", request, e);
 
