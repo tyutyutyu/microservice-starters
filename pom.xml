@@ -70,6 +70,7 @@
 		<spring-integration-java-dsl.version>1.0.2.RELEASE</spring-integration-java-dsl.version>
 		<spring-session.version>1.0.2.RELEASE</spring-session.version>
 		<super-csv.version>2.4.0</super-csv.version>
+		<user-agent-utils.version>1.19</user-agent-utils.version>
 		<usertype.version>5.0.0.GA</usertype.version>
 	</properties>
 
@@ -184,6 +185,11 @@
 				<groupId>com.papertrailapp</groupId>
 				<artifactId>logback-syslog4j</artifactId>
 				<version>${logback-syslog4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>eu.bitwalker</groupId>
+				<artifactId>UserAgentUtils</artifactId>
+				<version>${user-agent-utils.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>net.kencochrane.raven</groupId>

@@ -1,10 +1,13 @@
 package hu.bankmonitor.starter.microservice.common.log;
 
+import eu.bitwalker.useragentutils.BrowserType;
+import eu.bitwalker.useragentutils.UserAgent;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import lombok.experimental.UtilityClass;
+import org.slf4j.Logger;
 
 @UtilityClass
 public final class LogUtils {
@@ -13,7 +16,7 @@ public final class LogUtils {
 	 * Create developer friendly log message from the {@link HttpServletRequest}.
 	 *
 	 * @param request The request to convert
-	 * 
+	 *
 	 * @return The message
 	 */
 	public static String log(HttpServletRequest request) {
@@ -34,6 +37,17 @@ public final class LogUtils {
 		}
 
 		return sb.toString();
+	}
+
+	public static void logException(Logger log, String method, HttpServletRequest request, Exception e) {
+
+		UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
+
+		if (userAgent.getBrowser().getBrowserType() == BrowserType.ROBOT) {
+			log.trace("{} - request: {}", method, LogUtils.log(request), e);
+		} else {
+			log.error("{} - request: {}", method, LogUtils.log(request), e);
+		}
 	}
 
 }

@@ -29,15 +29,18 @@
 			<artifactId>spring-boot-starter-amqp</artifactId>
 			<optional>true</optional>
 		</dependency>
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-joda</artifactId>
-			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>com.papertrailapp</groupId>
 			<artifactId>logback-syslog4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>eu.bitwalker</groupId>
+			<artifactId>UserAgentUtils</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -51,12 +54,9 @@
 			<groupId>net.kencochrane.raven</groupId>
 			<artifactId>raven-logback</artifactId>
 		</dependency>
-
-		<!-- OPTIONAL -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
 		</dependency>
 
 		<!-- PROVIDED -->

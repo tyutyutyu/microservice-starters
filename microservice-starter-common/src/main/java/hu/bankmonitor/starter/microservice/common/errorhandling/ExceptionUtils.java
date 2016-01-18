@@ -1,4 +1,4 @@
-package hu.bankmonitor.starter.microservice.common.exception;
+package hu.bankmonitor.starter.microservice.common.errorhandling;
 
 import java.util.Map;
 import lombok.experimental.UtilityClass;
