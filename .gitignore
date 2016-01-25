@@ -1,3 +1,4 @@
+
 # Created by https://www.gitignore.io/api/java,maven,eclipse,netbeans,osx,windows
 
 ### Java ###
@@ -28,9 +29,8 @@ buildNumber.properties
 
 
 ### Eclipse ###
-*.pydevproject
+
 .metadata
-.gradle
 bin/
 tmp/
 *.tmp
@@ -50,7 +50,10 @@ local.properties
 # Locally stored "Eclipse launch configurations"
 *.launch
 
-# CDT-specific
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
 .cproject
 
 # JDT-specific (Eclipse Java Development Tools)
@@ -59,7 +62,7 @@ local.properties
 # Java annotation processor (APT)
 .factorypath
 
-# PDT-specific
+# PDT-specific (PHP Development Tools)
 .buildpath
 
 # sbteclipse plugin
@@ -67,6 +70,9 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
 
 
 ### NetBeans ###
@@ -76,7 +82,6 @@ nbbuild/
 dist/
 nbdist/
 nbactions.xml
-nb-configuration.xml
 .nb-gradle/
 
 
