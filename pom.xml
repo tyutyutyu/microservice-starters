@@ -71,7 +71,7 @@
 		<spring-session.version>1.0.2.RELEASE</spring-session.version>
 		<super-csv.version>2.4.0</super-csv.version>
 		<user-agent-utils.version>1.19</user-agent-utils.version>
-		<usertype.version>5.0.0.GA</usertype.version>
+		<usertype.version>4.0.0.GA</usertype.version>
 	</properties>
 
 	<modules>
