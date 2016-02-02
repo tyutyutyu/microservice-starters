@@ -1,0 +1,55 @@
+{
+	"groups": 
+	[
+		{
+			"name": "microservice-starters.paper-trail",
+			"type": "hu.bankmonitor.starter.microservice.common.log.PaperTrailProperties",
+			"sourceType": "hu.bankmonitor.starter.microservice.common.log.PaperTrailProperties"
+		},
+
+		{
+			"name": "microservice-starters.sentry",
+			"type": "hu.bankmonitor.starter.microservice.common.log.SentryProperties",
+			"sourceType": "hu.bankmonitor.starter.microservice.common.log.SentryProperties"
+		}
+	],
+
+	"properties": 
+	[
+		{
+			"name": "microservice-starters.paper-trail.host",
+			"type": "java.lang.String",
+			"description": "PaperTrail host"
+		},
+
+		{
+			"name": "microservice-starters.paper-trail.port",
+			"type": "java.lang.Integer",
+			"description": "PaperTrail port"
+		},
+
+		{
+			"name": "microservice-starters.paper-trail.ident",
+			"type": "java.lang.String",
+			"description": "PaperTrail application name"
+		},
+
+		{
+			"name": "microservice-starters.paper-trail.pattern",
+			"type": "java.lang.String",
+			"description": "PaperTrail log pattern"
+		},
+
+		{
+			"name": "microservice-starters.paper-trail.max-message-length",
+			"type": "java.lang.Integer",
+			"description": "PaperTrail max message length"
+		},
+
+		{
+			"name": "microservice-starters.sentry.dsn",
+			"type": "java.lang.String",
+			"description": "Sentry DSN"
+		}
+	]
+}
