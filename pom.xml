@@ -35,6 +35,9 @@
 	</distributionManagement>
 
 	<properties>
+		<!-- Disable Spring Boot's animal-sniffer-maven-plugin check -->
+		<disable.checks>true</disable.checks>
+
 		<duplicate-finder-maven-plugin.version>1.2.1</duplicate-finder-maven-plugin.version>
 		<lombok-maven-plugin.version>1.16.6.1</lombok-maven-plugin.version>
 		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
@@ -85,6 +88,11 @@
 			<id>repo.spring.io-releases</id>
 			<name>repo.spring.io-releases</name>
 			<url>http://repo.spring.io/release</url>
+		</repository>
+		<repository>
+			<id>repo.spring.io-milestones</id>
+			<name>repo.spring.io-milestones</name>
+			<url>https://repo.spring.io/milestone</url>
 		</repository>
 
 		<repository>
