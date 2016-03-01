@@ -35,7 +35,7 @@
 	</distributionManagement>
 
 	<properties>
-		<!-- Disable Spring Boot's animal-sniffer-maven-plugin check -->
+		<!-- Disable Spring Boot's checks -->
 		<disable.checks>true</disable.checks>
 
 		<duplicate-finder-maven-plugin.version>1.2.1</duplicate-finder-maven-plugin.version>
