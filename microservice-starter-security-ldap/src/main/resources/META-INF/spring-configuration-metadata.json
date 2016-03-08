@@ -1,0 +1,53 @@
+{
+	"groups": [
+		{
+			"name": "microservice-starters.security.ldap",
+			"type": "hu.bankmonitor.starter.microservice.security.ldap.LdapSecurityProperties",
+			"sourceType": "hu.bankmonitor.starter.microservice.security.ldap.LdapSecurityProperties"
+		}
+	],
+
+	"properties": [
+		{
+			"name": "microservice-starters.security.ldap.provider-uri",
+			"type": "java.lang.String",
+			"description": "LDAP provider uri (see DefaultSpringSecurityContextSource)"
+		},
+
+		{
+			"name": "microservice-starters.security.ldap.provider-user-dn",
+			"type": "java.lang.String",
+			"description": "LDAP provider user DN (see DefaultSpringSecurityContextSource)"
+		},
+
+		{
+			"name": "microservice-starters.security.ldap.provider-password",
+			"type": "java.lang.String",
+			"description": "LDAP provider password (see DefaultSpringSecurityContextSource)"
+		},
+
+		{
+			"name": "microservice-starters.security.ldap.user-search-base",
+			"type": "java.lang.String",
+			"description": "LDAP user search base (see FilterBasedLdapUserSearch)"
+		},
+
+		{
+			"name": "microservice-starters.security.ldap.user-search-filter",
+			"type": "java.lang.String",
+			"description": "LDAP user search filter (see FilterBasedLdapUserSearch)"
+		},
+
+		{
+			"name": "microservice-starters.security.ldap.group-search-base",
+			"type": "java.lang.String",
+			"description": "LDAP group search base (see DefaultLdapAuthoritiesPopulator)"
+		},
+
+		{
+			"name": "microservice-starters.security.ldap.permit-all-resource-matchers",
+			"type": "java.lang.String[]",
+			"description": "Public resources' ant matchers"
+		}
+	]
+}

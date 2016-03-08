@@ -78,6 +78,7 @@
 		<module>microservice-starter-common</module>
 		<module>microservice-autoconfigure</module>
 		<module>microservice-starter-messaging</module>
+		<module>microservice-starter-security-ldap</module>
 	</modules>
 
 	<repositories>
@@ -126,6 +127,11 @@
 			<dependency>
 				<groupId>hu.bankmonitor.commons</groupId>
 				<artifactId>microservice-starter-messaging</artifactId>
+				<version>${microservice-starters.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>hu.bankmonitor.commons</groupId>
+				<artifactId>microservice-starter-security-ldap</artifactId>
 				<version>${microservice-starters.version}</version>
 			</dependency>
 
