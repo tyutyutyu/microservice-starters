@@ -6,22 +6,25 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import lombok.experimental.UtilityClass;
 import org.slf4j.Logger;
 
-@UtilityClass
 public final class LogUtils {
+
+	private LogUtils() {
+
+	}
 
 	/**
 	 * Create developer friendly log message from the {@link HttpServletRequest}.
 	 *
-	 * @param request The request to convert
+	 * @param request
+	 *            The request to convert
 	 *
 	 * @return The message
 	 */
 	public static String log(HttpServletRequest request) {
 
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		sb.append("\nURI        :").append(request.getRequestURI());
 		for (Object n : Collections.list(request.getHeaderNames())) {
 			sb.append("\nHeader     :").append(n).append("=").append(request.getHeader(n.toString()));

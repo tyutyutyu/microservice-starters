@@ -1,7 +1,9 @@
 package hu.bankmonitor.starter.microservice.messaging;
 
+import hu.bankmonitor.starter.microservice.common.exception.MicroserviceStarterRuntimeException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpAdmin;
@@ -26,11 +28,11 @@ import org.springframework.util.ClassUtils;
 @Slf4j
 public class RpcServiceConfiguration {
 
-	private final static String AMQP_PROXY_SUFFIX = "_AMQP_PROXY";
+	private static final String AMQP_PROXY_SUFFIX = "_AMQP_PROXY";
 
-	private final static String AMQP_SERVICE_EXPORTER_SUFFIX = "_SERVICE_EXPORTER";
+	private static final String AMQP_SERVICE_EXPORTER_SUFFIX = "_SERVICE_EXPORTER";
 
-	private final static String AMQP_LISTENER_SUFFIX = "_AMQP_LISTENER";
+	private static final String AMQP_LISTENER_SUFFIX = "_AMQP_LISTENER";
 
 	private static final String BASE_PACKAGE = "hu";
 
@@ -84,21 +86,23 @@ public class RpcServiceConfiguration {
 				log.debug("registerRpcClients - {} with name {} was registered.", amqpProxyFactoryBuilder.getBeanDefinition().getBeanClassName(), proxyName);
 
 			} catch (ClassNotFoundException e) {
-				log.error("amqp proxy service cannot be created :{}", bd.getBeanClassName());
+				throw new MicroserviceStarterRuntimeException("Amqp proxy service [class: " + bd.getBeanClassName() + "] cannot be created", e);
 			}
 
 		}
-		// amqpAdmin.declareBinding(BindingBuilder.bind(new Queue(properties.getRpcQueueName())).to(new DirectExchange(properties.getExchangeName())).with(""));
 	}
 
 	private void registerRpcServers() {
 
-		// log.debug("registerRpcServers - rpcServices: {}", rpcServices);
-
 		if (rpcServices != null) {
+			log.debug("registerRpcServers - rpc services to register: {}", rpcServices);
+
 			for (RpcService rpcService : rpcServices) {
-				Class<?> rpcServiceInterface =
-						Arrays.stream(ClassUtils.getAllInterfaces(rpcService)).filter(c -> c.getAnnotation(RpcServiceServer.class) != null).findFirst().get();
+
+				Class<?> rpcServiceInterface;
+				try (Stream<Class<?>> stream = Arrays.stream(ClassUtils.getAllInterfaces(rpcService))) {
+					rpcServiceInterface = stream.filter(c -> c.getAnnotation(RpcServiceServer.class) != null).findFirst().get();
+				}
 
 				BeanDefinitionBuilder amqpServiceExporterBuilder = BeanDefinitionBuilder.genericBeanDefinition(AmqpInvokerServiceExporter.class);
 				amqpServiceExporterBuilder.addPropertyReference("amqpTemplate", "rabbitTemplate");
@@ -116,10 +120,9 @@ public class RpcServiceConfiguration {
 				registry.registerBeanDefinition(rpcServiceInterface.getName() + AMQP_LISTENER_SUFFIX, messageListenerContainerBuilder.getBeanDefinition());
 
 				log.debug("registerRpcServers - {} with name {} was registered.", amqpServiceExporterBuilder.getBeanDefinition().getBeanClassName(), beanName);
-				amqpAdmin.declareBinding(BindingBuilder.bind(new Queue(properties.getRpcQueueName())).to(new DirectExchange(properties.getExchangeName()))
-						.with(rpcServiceInterface.getName()));
+				amqpAdmin.declareBinding(
+						BindingBuilder.bind(new Queue(properties.getRpcQueueName())).to(new DirectExchange(properties.getExchangeName())).with(rpcServiceInterface.getName()));
 			}
-
 		}
 	}
 

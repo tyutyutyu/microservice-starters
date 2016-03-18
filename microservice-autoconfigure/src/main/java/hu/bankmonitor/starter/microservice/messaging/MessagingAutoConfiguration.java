@@ -2,7 +2,6 @@ package hu.bankmonitor.starter.microservice.messaging;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
-import hu.bankmonitor.starter.microservice.messaging.EventClassFinderConfiguration.EventClassFinder;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AcknowledgeMode;
@@ -24,15 +23,15 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 @ConditionalOnClass({ RabbitAdmin.class })
 @Configuration
 @EnableConfigurationProperties(MessagingProperties.class)
-@Import({ EventClassFinderConfiguration.class })
 @Slf4j
 @SuppressWarnings("static-method")
 public class MessagingAutoConfiguration {
+
+	private static final String BASE_PACKAGE = "hu";
 
 	@Configuration
 	public static class RabbitListenerConfigurerImpl implements RabbitListenerConfigurer {
@@ -61,15 +60,12 @@ public class MessagingAutoConfiguration {
 	private AmqpAdmin amqpAdmin;
 
 	@Autowired
-	private EventClassFinder eventClassFinder;
-
-	@Autowired
 	private MessagingProperties properties;
 
 	@PostConstruct
 	void init() {
 
-		log.debug("MessagingAutoConfiguration loaded. [properties={}, eventClassFinder={}]", properties, eventClassFinder);
+		log.debug("MessagingAutoConfiguration loaded. [properties={}]", properties);
 
 		createBindings();
 
@@ -109,12 +105,6 @@ public class MessagingAutoConfiguration {
 		return new TopicExchange(properties.getExchangeName(), true, false);
 	}
 
-	// @Bean
-	// EventClassFinderConfiguration listenerFinderService() {
-	//
-	// return new EventClassFinderConfiguration();
-	// }
-
 	@Bean
 	RpcServiceConfiguration rpcServiceConfiguration() {
 
@@ -123,6 +113,7 @@ public class MessagingAutoConfiguration {
 
 	private void createBindings() {
 
+		EventClassFinder eventClassFinder = new EventClassFinder(BASE_PACKAGE);
 		for (String className : eventClassFinder.findEventClasses()) {
 			amqpAdmin.declareBinding(BindingBuilder.bind(queue()).to(exchange()).with(className));
 		}

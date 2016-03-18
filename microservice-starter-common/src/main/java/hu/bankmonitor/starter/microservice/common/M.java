@@ -1,11 +1,13 @@
 package hu.bankmonitor.starter.microservice.common;
 
-import lombok.experimental.UtilityClass;
 import org.slf4j.Marker;
 import org.slf4j.helpers.BasicMarkerFactory;
 
-@UtilityClass
 public final class M {
+
+	private M() {
+
+	}
 
 	/**
 	 * Marker for method parameter logging

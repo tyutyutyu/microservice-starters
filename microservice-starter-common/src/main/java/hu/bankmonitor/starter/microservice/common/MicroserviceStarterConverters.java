@@ -21,7 +21,7 @@ public final class MicroserviceStarterConverters {
 	 *
 	 * @author Oliver Gierke
 	 */
-	public static enum DateToLocalDateConverter implements Converter<Date, LocalDate> {
+	public enum DateToLocalDateConverter implements Converter<Date, LocalDate> {
 
 		INSTANCE;
 

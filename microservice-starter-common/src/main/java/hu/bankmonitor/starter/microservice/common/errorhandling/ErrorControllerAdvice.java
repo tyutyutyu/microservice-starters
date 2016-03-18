@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Slf4j
 public class ErrorControllerAdvice {
 
+	private static final String ERROR_VIEW_404 = "errors/404";
+
+	private static final String ERROR_VIEW_500 = "errors/500";
+
 	@ExceptionHandler(Throwable.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@SuppressWarnings("static-method")
@@ -21,7 +25,7 @@ public class ErrorControllerAdvice {
 
 		LogUtils.logException(log, "handleThrowable", request, e);
 
-		return "errors/500";
+		return ERROR_VIEW_500;
 	}
 
 	@ExceptionHandler(UnsatisfiedServletRequestParameterException.class)
@@ -31,18 +35,17 @@ public class ErrorControllerAdvice {
 
 		LogUtils.logException(log, "handleUnsatisfiedServletRequestParameterException", request, e);
 
-		return "errors/500";
+		return ERROR_VIEW_500;
 	}
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	@SuppressWarnings("static-method")
-	// TODO: FI: küldeni kell majd a monitoring ES-be
 	public String handleResourceNotFoundException(HttpServletRequest request, Exception e) {
 
 		log.debug("handleResourceNotFoundException - request.url: {}, exception.message: {}", request.getRequestURL(), e.getMessage());
 
-		return "errors/404";
+		return ERROR_VIEW_404;
 	}
 
 	@ExceptionHandler(BankmonitorException.class)
@@ -52,7 +55,7 @@ public class ErrorControllerAdvice {
 
 		LogUtils.logException(log, "handleBankmonitorException", request, e);
 
-		return "errors/500";
+		return ERROR_VIEW_500;
 	}
 
 	@ExceptionHandler(BankmonitorRestException.class)
