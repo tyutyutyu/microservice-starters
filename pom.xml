@@ -63,7 +63,7 @@
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<lombok.version>1.16.8</lombok.version>
 		<poi.version>3.14</poi.version>
-		<raven-logback.version>6.0.0</raven-logback.version>
+		<raven-logback.version>7.0.0</raven-logback.version>
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
 		<spring-cloud-starter-parent.version>Brixton.M5</spring-cloud-starter-parent.version>
 		<spring-cloud-config-server.version>1.1.0.M5</spring-cloud-config-server.version>
@@ -172,6 +172,16 @@
 			</dependency>
 
 			<dependency>
+				<groupId>com.getsentry.raven</groupId>
+				<artifactId>raven-logback</artifactId>
+				<version>${raven-logback.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.papertrailapp</groupId>
+				<artifactId>logback-syslog4j</artifactId>
+				<version>${logback-syslog4j.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>commons-beanutils</groupId>
 				<artifactId>commons-beanutils</artifactId>
 				<version>${commons-beanutils.version}</version>
@@ -193,19 +203,9 @@
 				<version>${commons-io.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.papertrailapp</groupId>
-				<artifactId>logback-syslog4j</artifactId>
-				<version>${logback-syslog4j.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>eu.bitwalker</groupId>
 				<artifactId>UserAgentUtils</artifactId>
 				<version>${user-agent-utils.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>net.kencochrane.raven</groupId>
-				<artifactId>raven-logback</artifactId>
-				<version>${raven-logback.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>net.tanesha.recaptcha4j</groupId>

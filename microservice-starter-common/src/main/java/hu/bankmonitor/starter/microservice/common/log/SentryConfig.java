@@ -3,9 +3,9 @@ package hu.bankmonitor.starter.microservice.common.log;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.filter.ThresholdFilter;
+import com.getsentry.raven.logback.SentryAppender;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
-import net.kencochrane.raven.logback.SentryAppender;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -42,6 +42,7 @@ public class SentryConfig {
 			sentryAppender.setContext(loggerContext);
 
 			sentryAppender.setDsn(sentryProperties.getDsn());
+			sentryAppender.setRelease(sentryProperties.getRelease());
 
 			ThresholdFilter thresholdFilter = new ThresholdFilter();
 			thresholdFilter.setLevel("ERROR");

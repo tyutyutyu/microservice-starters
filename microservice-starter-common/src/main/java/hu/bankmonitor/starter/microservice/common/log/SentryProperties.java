@@ -10,8 +10,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class SentryProperties {
 
 	/**
-	 * Sentry DSN
+	 * @see com.getsentry.raven.logback.SentryAppender
 	 */
 	private String dsn;
+
+	/**
+	 * @see com.getsentry.raven.logback.SentryAppender
+	 */
+	private String release;
 
 }

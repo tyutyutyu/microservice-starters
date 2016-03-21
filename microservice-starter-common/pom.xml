@@ -34,6 +34,10 @@
 			<artifactId>jackson-datatype-joda</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.getsentry.raven</groupId>
+			<artifactId>raven-logback</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.papertrailapp</groupId>
 			<artifactId>logback-syslog4j</artifactId>
 		</dependency>
@@ -48,10 +52,6 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.kencochrane.raven</groupId>
-			<artifactId>raven-logback</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
