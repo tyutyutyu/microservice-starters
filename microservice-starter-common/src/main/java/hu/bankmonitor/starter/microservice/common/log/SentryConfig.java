@@ -4,11 +4,15 @@ import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.filter.ThresholdFilter;
 import com.getsentry.raven.logback.SentryAppender;
+import com.getsentry.raven.servlet.RavenServletContainerInitializer;
 import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -68,6 +72,30 @@ public class SentryConfig {
 	SentryProperties sentryProperties() {
 
 		return new SentryProperties();
+	}
+
+	/**
+	 * RavenServletContainerInitializer fix.
+	 *
+	 * @see http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#howto-add-a-servlet-filter-or-servletcontextlistener
+	 *
+	 * @return
+	 */
+	@Bean
+	@ConditionalOnProperty(prefix = "microservice-starters.sentry", name = { "dsn" })
+	@SuppressWarnings("static-method")
+	public ServletContextInitializer servletContextInitializer() {
+
+		return new ServletContextInitializer() {
+
+			private RavenServletContainerInitializer ravenServletContainerInitializer = new RavenServletContainerInitializer();
+
+			@Override
+			public void onStartup(ServletContext servletContext) throws ServletException {
+
+				ravenServletContainerInitializer.onStartup(null, servletContext);
+			}
+		};
 	}
 
 }
