@@ -18,6 +18,7 @@ public class ErrorControllerAdvice {
 
 	private static final String ERROR_VIEW_500 = "errors/500";
 
+	@Deprecated
 	@ExceptionHandler(Throwable.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@SuppressWarnings("static-method")
@@ -28,6 +29,7 @@ public class ErrorControllerAdvice {
 		return ERROR_VIEW_500;
 	}
 
+	@Deprecated
 	@ExceptionHandler(UnsatisfiedServletRequestParameterException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@SuppressWarnings("static-method")
@@ -38,6 +40,7 @@ public class ErrorControllerAdvice {
 		return ERROR_VIEW_500;
 	}
 
+	@Deprecated
 	@ExceptionHandler(ResourceNotFoundException.class)
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	@SuppressWarnings("static-method")
@@ -48,6 +51,7 @@ public class ErrorControllerAdvice {
 		return ERROR_VIEW_404;
 	}
 
+	@Deprecated
 	@ExceptionHandler(BankmonitorException.class)
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	@SuppressWarnings("static-method")
