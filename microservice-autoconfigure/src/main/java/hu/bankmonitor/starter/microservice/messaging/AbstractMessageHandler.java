@@ -1,6 +1,8 @@
 package hu.bankmonitor.starter.microservice.messaging;
 
-import hu.bankmonitor.starter.microservice.common.exception.MicroserviceStarterRuntimeException;
+import hu.bankmonitor.starter.microservice.common.errorhandling.ExceptionData;
+import hu.bankmonitor.starter.microservice.common.errorhandling.ExceptionType;
+import hu.bankmonitor.starter.microservice.common.errorhandling.MicroserviceStarterRuntimeException;
 import java.lang.reflect.InvocationTargetException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -24,7 +26,8 @@ public abstract class AbstractMessageHandler {
 		try {
 			this.getClass().getMethod("handleMessage", event.getClass()).invoke(this, event);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-			throw new MicroserviceStarterRuntimeException("Problem while invoking the handleMessage implementation", e);
+			throw new MicroserviceStarterRuntimeException(ExceptionData.builder().type(ExceptionType.RABBITMQ_MESSAGE_HANDLING_ERROR)
+					.message("Problem while invoking the handleMessage implementation").cause(e).build());
 		}
 	}
 

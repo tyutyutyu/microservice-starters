@@ -1,6 +1,9 @@
 package hu.bankmonitor.starter.microservice.messaging;
 
-import hu.bankmonitor.starter.microservice.common.exception.MicroserviceStarterRuntimeException;
+import com.google.common.collect.ImmutableMap;
+import hu.bankmonitor.starter.microservice.common.errorhandling.ExceptionData;
+import hu.bankmonitor.starter.microservice.common.errorhandling.ExceptionType;
+import hu.bankmonitor.starter.microservice.common.errorhandling.MicroserviceStarterRuntimeException;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,12 +32,17 @@ public class EventClassFinder {
 		Set<String> eventClassesByHandlers = findEventClassesByHandlers();
 		Set<String> eventClassesByInheritance = findEventClassesByInheritance();
 
-		if (!eventClassesByHandlers.containsAll(eventClassesByInheritance)) {
-			throw new MicroserviceStarterRuntimeException("Message handlers are not handling all event types");
-		}
-
 		if (!eventClassesByInheritance.containsAll(eventClassesByHandlers)) {
-			throw new MicroserviceStarterRuntimeException("Message handlers handling event types that do not inherit from AbstractEvent");
+			// @formatter:off
+			throw new MicroserviceStarterRuntimeException(
+				ExceptionData.builder()
+					.type(ExceptionType.EVENT_CLASS_FINDER_FIND_EVENT_CLASSES_ERROR)
+					.message("Message handlers handling event types that do not inherit from AbstractEvent")
+					.data(ImmutableMap.of(
+							"eventClassesByHandlers", eventClassesByHandlers,
+							"eventClassesByInheritance", eventClassesByInheritance))
+					.build());
+			// @formatter:on
 		}
 
 		return eventClassesByHandlers;
@@ -55,7 +63,16 @@ public class EventClassFinder {
 					if (MESSAGE_HANDLER_METHOD_NAME.equals(method.getName())) {
 
 						if (method.getParameterCount() != 1) {
-							throw new MicroserviceStarterRuntimeException("Message handlers' '" + MESSAGE_HANDLER_METHOD_NAME + "' method(s) must have 1 parameter");
+							// @formatter:off
+							throw new MicroserviceStarterRuntimeException(
+								ExceptionData.builder()
+									.type(ExceptionType.EVENT_CLASS_FINDER_WRONG_METHOD_SIGNITURE)
+									.message("Message handlers' method(s) must have exactly one parameter")
+									.data(ImmutableMap.of(
+											"className", bd.getBeanClassName(),
+											"method", method.toGenericString()))
+									.build());
+							// @formatter:on
 						}
 
 						String eventClass = method.getParameters()[0].getType().getName();
@@ -64,8 +81,17 @@ public class EventClassFinder {
 					}
 				}
 
-			} catch (IllegalArgumentException | ClassNotFoundException | LinkageError e) {
-				throw new MicroserviceStarterRuntimeException("Problem while finding event classes", e);
+			} catch (ClassNotFoundException | LinkageError e) {
+				// @formatter:off
+				throw new MicroserviceStarterRuntimeException(
+					ExceptionData.builder()
+						.type(ExceptionType.EVENT_CLASS_FINDER_CLASS_LOADING_ERROR)
+						.message("Message handlers' method(s) must have exactly one parameter")
+						.cause(e)
+						.data(ImmutableMap.of("className", bd.getBeanClassName()))
+						.build());
+				// @formatter:on
+				// throw new MicroserviceStarterRuntimeException("Problem while finding event classes", e);
 			}
 		}
 

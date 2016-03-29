@@ -1,6 +1,9 @@
 package hu.bankmonitor.starter.microservice.messaging;
 
-import hu.bankmonitor.starter.microservice.common.exception.MicroserviceStarterRuntimeException;
+import com.google.common.collect.ImmutableMap;
+import hu.bankmonitor.starter.microservice.common.errorhandling.ExceptionData;
+import hu.bankmonitor.starter.microservice.common.errorhandling.ExceptionType;
+import hu.bankmonitor.starter.microservice.common.errorhandling.MicroserviceStarterRuntimeException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -86,7 +89,8 @@ public class RpcServiceConfiguration {
 				log.debug("registerRpcClients - {} with name {} was registered.", amqpProxyFactoryBuilder.getBeanDefinition().getBeanClassName(), proxyName);
 
 			} catch (ClassNotFoundException e) {
-				throw new MicroserviceStarterRuntimeException("Amqp proxy service [class: " + bd.getBeanClassName() + "] cannot be created", e);
+				throw new MicroserviceStarterRuntimeException(ExceptionData.builder().type(ExceptionType.RABBITMQ_RPC_INIT_ERROR).message("Amqp proxy service cannot be created")
+						.cause(e).data(ImmutableMap.of("className", bd.getBeanClassName())).build());
 			}
 
 		}

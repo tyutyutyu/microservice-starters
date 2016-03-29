@@ -2,7 +2,7 @@ package hu.bankmonitor.starter.microservice.messaging;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import hu.bankmonitor.starter.microservice.common.exception.MicroserviceStarterRuntimeException;
+import hu.bankmonitor.starter.microservice.common.errorhandling.MicroserviceStarterRuntimeException;
 import hu.bankmonitor.starter.microservice.messaging.workingconfig.EEvent;
 import hu.bankmonitor.starter.microservice.messaging.workingconfig.FEvent;
 import java.util.Set;
@@ -38,20 +38,6 @@ public class EventClassFinderTest {
 		// then
 		thrown.expect(MicroserviceStarterRuntimeException.class);
 		thrown.expectMessage("Message handlers handling event types that do not inherit from AbstractEvent");
-
-		// when
-		eventClassFinder.findEventClasses();
-	}
-
-	@Test
-	public void testFindEventClassesWithMoreEvents() {
-
-		// given
-		EventClassFinder eventClassFinder = new EventClassFinder("hu.bankmonitor.starter.microservice.messaging.testmoreevents");
-
-		// then
-		thrown.expect(MicroserviceStarterRuntimeException.class);
-		thrown.expectMessage("Message handlers are not handling all event types");
 
 		// when
 		eventClassFinder.findEventClasses();
