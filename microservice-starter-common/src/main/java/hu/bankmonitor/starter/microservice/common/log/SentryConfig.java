@@ -75,9 +75,8 @@ public class SentryConfig {
 	}
 
 	/**
-	 * RavenServletContainerInitializer fix.
-	 *
-	 * @see http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#howto-add-a-servlet-filter-or-servletcontextlistener
+	 * RavenServletContainerInitializer fix. (See:
+	 * http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#howto-add-a-servlet-filter-or-servletcontextlistener)
 	 *
 	 * @return
 	 */
