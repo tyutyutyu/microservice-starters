@@ -28,12 +28,12 @@ public class RestErrorMessage {
 		return RestErrorMessage.builder().type(ExceptionType.UNKNOWN_ERROR.toString()).build();
 	}
 
-	public static RestErrorMessage create(ExceptionWithExceptionData exception) {
+	public static RestErrorMessage create(ExceptionWithExceptionContext exception) {
 
-		RestErrorMessageBuilder restErrorMessageBuilder = RestErrorMessage.builder().type(exception.getExceptionData().getType().name());
+		RestErrorMessageBuilder restErrorMessageBuilder = RestErrorMessage.builder().type(exception.getExceptionContext().getType().name());
 
-		if (exception.getExceptionData().getData().containsKey(BINDING_RESULT_KEY)) {
-			restErrorMessageBuilder.fieldErrors(getErrorMessages((BindingResult) exception.getExceptionData().getData().get(BINDING_RESULT_KEY)));
+		if (exception.getExceptionContext().getData().containsKey(BINDING_RESULT_KEY)) {
+			restErrorMessageBuilder.fieldErrors(getErrorMessages((BindingResult) exception.getExceptionContext().getData().get(BINDING_RESULT_KEY)));
 		}
 
 		return restErrorMessageBuilder.build();

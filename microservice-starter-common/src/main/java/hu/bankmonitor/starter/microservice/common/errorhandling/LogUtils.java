@@ -6,13 +6,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.slf4j.MDC.MDCCloseable;
 
-@Slf4j
 public final class LogUtils {
 
 	private static final String EOL = System.lineSeparator();
@@ -23,15 +21,11 @@ public final class LogUtils {
 	private static final String LOG_MESSAGE =
 			"{}" + EOL + EOL +
 			SEPARATOR +
-			"= Exception data" + EOL +
+			"= Exception context" + EOL +
 			SEPARATOR +
 			"{}" +
 			SEPARATOR +
 			"= Request" + EOL +
-			SEPARATOR +
-			"{}" +
-			SEPARATOR +
-			"= Response" + EOL +
 			SEPARATOR +
 			"{}" +
 			SEPARATOR;
@@ -39,6 +33,54 @@ public final class LogUtils {
 
 	private LogUtils() {
 
+	}
+
+	static void logException(Throwable exception, HttpServletRequest request) {
+
+		ExceptionContext exceptionContext;
+		if (exception instanceof ExceptionWithExceptionContext) {
+			exceptionContext = ((ExceptionWithExceptionContext) exception).getExceptionContext();
+			exceptionContext.setRequest(request);
+		} else {
+			exceptionContext = ExceptionContext.builder().type(ExceptionType.UNKNOWN_ERROR).request(request).build();
+		}
+
+		logException(exception, exceptionContext);
+	}
+
+	public static void logException(ExceptionData exceptionData) {
+
+		logException(exceptionData.getCause(), ExceptionContext.create(exceptionData));
+	}
+
+	static void logException(Throwable exception, ExceptionContext exceptionContext) {
+
+		Logger exceptionLogger = LoggerFactory.getLogger(exceptionContext.getType().toString());
+
+		boolean callerIsRobot = false;
+		if (exceptionContext.getRequest() != null
+				&& UserAgent.parseUserAgentString(exceptionContext.getRequest().getHeader("User-Agent")).getBrowser().getBrowserType() == BrowserType.ROBOT) {
+			callerIsRobot = true;
+		}
+
+		try (
+			// @formatter:off
+				MDCCloseable exceptioDataTypeCloseable = MDC.putCloseable("exceptionContext.type", exceptionContext.getType().toString());
+				MDCCloseable exceptioDataDataCloseable = MDC.putCloseable("exceptionContext.data", exceptionContext.getData().toString());
+			// @formatter:on
+		) {
+
+			if (callerIsRobot) {
+				exceptionLogger.trace(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
+			} else {
+				exceptionLogger.error(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
+			}
+		}
+	}
+
+	private static Object log(ExceptionContext exceptionContext) {
+
+		return exceptionContext.toString() + EOL;
 	}
 
 	/**
@@ -50,6 +92,10 @@ public final class LogUtils {
 	 * @return The message
 	 */
 	public static String log(HttpServletRequest request) {
+
+		if (request == null) {
+			return "NO REQUEST DATA" + EOL;
+		}
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("URI        :").append(request.getRequestURI()).append(EOL);
@@ -68,49 +114,6 @@ public final class LogUtils {
 		}
 
 		return sb.toString();
-	}
-
-	public static void logException(Throwable exception, HttpServletRequest request) {
-
-		UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
-		if (userAgent.getBrowser().getBrowserType() == BrowserType.ROBOT) {
-			log.trace(exception.getMessage(), exception);
-		} else {
-			log.error(exception.getMessage(), exception);
-		}
-	}
-
-	public static void logException(ExceptionWithExceptionData exception, HttpServletRequest request, RestErrorMessage response) {
-
-		Logger exceptionLogger = LoggerFactory.getLogger(exception.getExceptionData().getType().toString());
-
-		UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
-
-		try (
-			// @formatter:off
-				MDCCloseable exceptioDataTypeCloseable = MDC.putCloseable("exceptionData.type", exception.getExceptionData().getType().toString());
-				MDCCloseable exceptioDataMessageCloseable = MDC.putCloseable("exceptionData.message", exception.getExceptionData().getMessage());
-				MDCCloseable exceptioDataDataCloseable = MDC.putCloseable("exceptionData.data", exception.getExceptionData().getData().toString());
-			// @formatter:on
-		) {
-
-			if (userAgent.getBrowser().getBrowserType() == BrowserType.ROBOT) {
-				// log.trace("{} - \n===================================================\n= request\n===================================================\n{}", method, log(request),
-				// e);
-			} else {
-				exceptionLogger.error(LOG_MESSAGE, exception.getExceptionData().getType().toString(), log(exception.getExceptionData()), log(request), log(response), exception);
-			}
-		}
-	}
-
-	private static Object log(ExceptionData exceptionData) {
-
-		return exceptionData.toString() + EOL;
-	}
-
-	private static String log(RestErrorMessage response) {
-
-		return response.toString() + EOL;
 	}
 
 }

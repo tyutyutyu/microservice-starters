@@ -1,21 +1,19 @@
 package hu.bankmonitor.starter.microservice.common.errorhandling;
 
-import java.util.UUID;
 import lombok.Getter;
 
 @Getter
-public class MicroserviceStarterRuntimeException extends RuntimeException implements ExceptionWithExceptionData {
+public class MicroserviceStarterRuntimeException extends RuntimeException implements ExceptionWithExceptionContext {
 
 	private static final long serialVersionUID = 1L;
 
-	private String id = UUID.randomUUID().toString();
-
-	private final ExceptionData exceptionData;
+	private final ExceptionContext exceptionContext;
 
 	public MicroserviceStarterRuntimeException(ExceptionData exceptionData) {
 
-		super(exceptionData.getMessage(), exceptionData.getCause());
-		this.exceptionData = exceptionData;
+		super(exceptionData.getCause());
+
+		exceptionContext = ExceptionContext.create(exceptionData);
 	}
 
 }

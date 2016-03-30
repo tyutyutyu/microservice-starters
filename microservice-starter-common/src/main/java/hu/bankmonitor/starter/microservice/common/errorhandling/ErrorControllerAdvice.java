@@ -27,11 +27,9 @@ public class ErrorControllerAdvice {
 	@SuppressWarnings("static-method")
 	public RestErrorMessage handleMicroserviceStarterException(HttpServletRequest request, MicroserviceStarterException exception) {
 
-		RestErrorMessage response = RestErrorMessage.create((ExceptionWithExceptionData) exception);
+		LogUtils.logException(exception, request);
 
-		LogUtils.logException(exception, request, response);
-
-		return response;
+		return RestErrorMessage.create((ExceptionWithExceptionContext) exception);
 	}
 
 	@ExceptionHandler(MicroserviceStarterRuntimeException.class)
@@ -40,11 +38,9 @@ public class ErrorControllerAdvice {
 	@SuppressWarnings("static-method")
 	public RestErrorMessage handleMicroserviceStarterRuntimeException(HttpServletRequest request, MicroserviceStarterRuntimeException exception) {
 
-		RestErrorMessage response = RestErrorMessage.create((ExceptionWithExceptionData) exception);
+		LogUtils.logException(exception, request);
 
-		LogUtils.logException(exception, request, response);
-
-		return response;
+		return RestErrorMessage.create((ExceptionWithExceptionContext) exception);
 	}
 
 }

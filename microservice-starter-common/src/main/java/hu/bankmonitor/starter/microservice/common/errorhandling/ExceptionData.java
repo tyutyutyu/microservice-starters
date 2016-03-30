@@ -2,6 +2,7 @@ package hu.bankmonitor.starter.microservice.common.errorhandling;
 
 import java.io.Serializable;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,10 +20,12 @@ public class ExceptionData implements Serializable {
 	@NonNull
 	private final Enum<?> type;
 
-	private String message;
+	// private String message;
 
 	private Throwable cause;
 
 	private Map<String, Object> data;
+
+	private HttpServletRequest request;
 
 }
