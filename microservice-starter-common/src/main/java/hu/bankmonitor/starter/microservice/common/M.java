@@ -5,10 +5,6 @@ import org.slf4j.helpers.BasicMarkerFactory;
 
 public final class M {
 
-	private M() {
-
-	}
-
 	/**
 	 * Marker for method parameter logging
 	 */
@@ -18,5 +14,9 @@ public final class M {
 	 * Marker for method return value logging
 	 */
 	public static final Marker RETURN = new BasicMarkerFactory().getMarker("RETURN");
+
+	private M() {
+
+	}
 
 }

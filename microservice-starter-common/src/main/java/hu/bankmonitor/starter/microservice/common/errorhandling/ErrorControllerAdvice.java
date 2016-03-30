@@ -18,7 +18,7 @@ public class ErrorControllerAdvice {
 
 		LogUtils.logException(exception, request);
 
-		return RestErrorMessage.create(exception);
+		return RestErrorMessage.create();
 	}
 
 	@ExceptionHandler(MicroserviceStarterException.class)
@@ -29,7 +29,7 @@ public class ErrorControllerAdvice {
 
 		LogUtils.logException(exception, request);
 
-		return RestErrorMessage.create((ExceptionWithExceptionContext) exception);
+		return RestErrorMessage.create(exception);
 	}
 
 	@ExceptionHandler(MicroserviceStarterRuntimeException.class)
@@ -40,7 +40,7 @@ public class ErrorControllerAdvice {
 
 		LogUtils.logException(exception, request);
 
-		return RestErrorMessage.create((ExceptionWithExceptionContext) exception);
+		return RestErrorMessage.create(exception);
 	}
 
 }

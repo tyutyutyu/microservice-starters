@@ -25,10 +25,10 @@ class ExceptionContext implements Serializable {
 	@NonNull
 	private final Enum<?> type;
 
-	private Map<String, Object> data;
+	private transient Map<String, Object> data;
 
 	@Setter(AccessLevel.PACKAGE)
-	private HttpServletRequest request;
+	private transient HttpServletRequest request;
 
 	public static ExceptionContext create(ExceptionData exceptionData) {
 

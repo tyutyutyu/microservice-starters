@@ -20,12 +20,10 @@ public class ExceptionData implements Serializable {
 	@NonNull
 	private final Enum<?> type;
 
-	// private String message;
-
 	private Throwable cause;
 
-	private Map<String, Object> data;
+	private transient Map<String, Object> data;
 
-	private HttpServletRequest request;
+	private transient HttpServletRequest request;
 
 }

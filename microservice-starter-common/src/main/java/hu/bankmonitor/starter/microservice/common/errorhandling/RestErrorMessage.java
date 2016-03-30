@@ -22,8 +22,7 @@ public class RestErrorMessage {
 
 	private Map<String, Object> fieldErrors;
 
-	@SuppressWarnings("unused")
-	public static RestErrorMessage create(Throwable exception) {
+	public static RestErrorMessage create() {
 
 		return RestErrorMessage.builder().type(ExceptionType.UNKNOWN_ERROR.toString()).build();
 	}

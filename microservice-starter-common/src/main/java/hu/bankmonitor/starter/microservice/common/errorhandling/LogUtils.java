@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
-import org.slf4j.MDC.MDCCloseable;
 
 public final class LogUtils {
+
+	private static final String EXCEPTION_CONTEXT_TYPE_KEY = "exceptionContext.type";
+
+	private static final String EXCEPTION_CONTEXT_DATA_KEY = "exceptionContext.data";
 
 	private static final String EOL = System.lineSeparator();
 
@@ -63,19 +66,17 @@ public final class LogUtils {
 			callerIsRobot = true;
 		}
 
-		try (
-			// @formatter:off
-				MDCCloseable exceptioDataTypeCloseable = MDC.putCloseable("exceptionContext.type", exceptionContext.getType().toString());
-				MDCCloseable exceptioDataDataCloseable = MDC.putCloseable("exceptionContext.data", exceptionContext.getData().toString());
-			// @formatter:on
-		) {
+		MDC.put(EXCEPTION_CONTEXT_TYPE_KEY, exceptionContext.getType().toString());
+		MDC.put(EXCEPTION_CONTEXT_DATA_KEY, exceptionContext.getData().toString());
 
-			if (callerIsRobot) {
-				exceptionLogger.trace(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
-			} else {
-				exceptionLogger.error(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
-			}
+		if (callerIsRobot) {
+			exceptionLogger.trace(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
+		} else {
+			exceptionLogger.error(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
 		}
+
+		MDC.remove(EXCEPTION_CONTEXT_TYPE_KEY);
+		MDC.remove(EXCEPTION_CONTEXT_DATA_KEY);
 	}
 
 	private static Object log(ExceptionContext exceptionContext) {

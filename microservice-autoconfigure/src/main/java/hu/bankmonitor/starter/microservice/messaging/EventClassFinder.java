@@ -88,7 +88,6 @@ public class EventClassFinder {
 						.data(ImmutableMap.of("className", bd.getBeanClassName()))
 						.build());
 				// @formatter:on
-				// throw new MicroserviceStarterRuntimeException("Problem while finding event classes", e);
 			}
 		}
 
