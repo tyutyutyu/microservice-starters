@@ -37,7 +37,6 @@ public class EventClassFinderTest {
 
 		// then
 		thrown.expect(MicroserviceStarterRuntimeException.class);
-		thrown.expectMessage("Message handlers handling event types that do not inherit from AbstractEvent");
 
 		// when
 		eventClassFinder.findEventClasses();

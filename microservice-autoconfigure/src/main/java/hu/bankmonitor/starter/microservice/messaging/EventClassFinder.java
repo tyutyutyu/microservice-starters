@@ -37,7 +37,6 @@ public class EventClassFinder {
 			throw new MicroserviceStarterRuntimeException(
 				ExceptionData.builder()
 					.type(ExceptionType.EVENT_CLASS_FINDER_FIND_EVENT_CLASSES_ERROR)
-					.message("Message handlers handling event types that do not inherit from AbstractEvent")
 					.data(ImmutableMap.of(
 							"eventClassesByHandlers", eventClassesByHandlers,
 							"eventClassesByInheritance", eventClassesByInheritance))
@@ -67,7 +66,6 @@ public class EventClassFinder {
 							throw new MicroserviceStarterRuntimeException(
 								ExceptionData.builder()
 									.type(ExceptionType.EVENT_CLASS_FINDER_WRONG_METHOD_SIGNITURE)
-									.message("Message handlers' method(s) must have exactly one parameter")
 									.data(ImmutableMap.of(
 											"className", bd.getBeanClassName(),
 											"method", method.toGenericString()))
@@ -86,7 +84,6 @@ public class EventClassFinder {
 				throw new MicroserviceStarterRuntimeException(
 					ExceptionData.builder()
 						.type(ExceptionType.EVENT_CLASS_FINDER_CLASS_LOADING_ERROR)
-						.message("Message handlers' method(s) must have exactly one parameter")
 						.cause(e)
 						.data(ImmutableMap.of("className", bd.getBeanClassName()))
 						.build());

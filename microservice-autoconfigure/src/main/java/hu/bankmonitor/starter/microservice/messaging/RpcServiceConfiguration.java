@@ -89,8 +89,13 @@ public class RpcServiceConfiguration {
 				log.debug("registerRpcClients - {} with name {} was registered.", amqpProxyFactoryBuilder.getBeanDefinition().getBeanClassName(), proxyName);
 
 			} catch (ClassNotFoundException e) {
-				throw new MicroserviceStarterRuntimeException(ExceptionData.builder().type(ExceptionType.RABBITMQ_RPC_INIT_ERROR).message("Amqp proxy service cannot be created")
-						.cause(e).data(ImmutableMap.of("className", bd.getBeanClassName())).build());
+				// @formatter:off
+				throw new MicroserviceStarterRuntimeException(ExceptionData.builder()
+						.type(ExceptionType.AMQP_PROXY_CREATING_ERROR)
+						.cause(e)
+						.data(ImmutableMap.of("className", bd.getBeanClassName()))
+						.build());
+				// @formatter:on
 			}
 
 		}

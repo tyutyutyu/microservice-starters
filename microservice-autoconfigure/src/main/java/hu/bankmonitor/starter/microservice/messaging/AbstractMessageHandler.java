@@ -26,8 +26,12 @@ public abstract class AbstractMessageHandler {
 		try {
 			this.getClass().getMethod("handleMessage", event.getClass()).invoke(this, event);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-			throw new MicroserviceStarterRuntimeException(ExceptionData.builder().type(ExceptionType.RABBITMQ_MESSAGE_HANDLING_ERROR)
-					.message("Problem while invoking the handleMessage implementation").cause(e).build());
+			// @formatter:off
+			throw new MicroserviceStarterRuntimeException(ExceptionData.builder()
+					.type(ExceptionType.RABBITMQ_MESSAGE_HANDLING_ERROR)
+					.cause(e)
+					.build());
+			// @formatter:on
 		}
 	}
 
