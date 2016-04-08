@@ -17,6 +17,11 @@ public class SentryProperties {
 	/**
 	 * @see com.getsentry.raven.logback.SentryAppender
 	 */
+	private String dsnPublic;
+
+	/**
+	 * @see com.getsentry.raven.logback.SentryAppender
+	 */
 	private String release;
 
 }

@@ -50,6 +50,12 @@
 			"name": "microservice-starters.sentry.dsn",
 			"type": "java.lang.String",
 			"description": "Sentry DSN"
+		},
+
+		{
+			"name": "microservice-starters.sentry.dsn-public",
+			"type": "java.lang.String",
+			"description": "Sentry Public DSN"
 		}
 	]
 }
