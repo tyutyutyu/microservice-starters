@@ -65,7 +65,6 @@
 		<poi.version>3.14</poi.version>
 		<raven-logback.version>7.1.0</raven-logback.version>
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
-		<!-- <spring-cloud-config-server.version>1.1.0.RC1</spring-cloud-config-server.version> -->
 		<spring-cloud-dependencies.version>Brixton.RC1</spring-cloud-dependencies.version>
 		<spring-integration-java-dsl.version>1.1.2.RELEASE</spring-integration-java-dsl.version>
 		<spring-session.version>1.1.1.RELEASE</spring-session.version>
@@ -143,19 +142,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
-			<!-- SPRING CLOUD -->
-			<!-- <dependency> -->
-			<!-- <groupId>org.springframework.cloud</groupId> -->
-			<!-- <artifactId>spring-cloud-config-server</artifactId> -->
-			<!-- <version>${spring-cloud-config-server.version}</version> -->
-			<!-- <exclusions> -->
-			<!-- <exclusion> -->
-			<!-- <artifactId>svnkit</artifactId> -->
-			<!-- <groupId>org.tmatesoft.svnkit</groupId> -->
-			<!-- </exclusion> -->
-			<!-- </exclusions> -->
-			<!-- </dependency> -->
 
 			<!-- SPRING SESSION -->
 			<dependency>
