@@ -63,9 +63,9 @@
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<lombok.version>1.16.8</lombok.version>
 		<poi.version>3.14</poi.version>
-		<raven-logback.version>7.1.0</raven-logback.version>
+		<raven-logback.version>7.2.0</raven-logback.version>
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
-		<spring-cloud-dependencies.version>Brixton.RC1</spring-cloud-dependencies.version>
+		<spring-cloud-dependencies.version>Brixton.RC2</spring-cloud-dependencies.version>
 		<spring-integration-java-dsl.version>1.1.2.RELEASE</spring-integration-java-dsl.version>
 		<spring-session.version>1.1.1.RELEASE</spring-session.version>
 		<super-csv.version>2.4.0</super-csv.version>
