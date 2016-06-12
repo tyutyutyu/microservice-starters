@@ -3,4 +3,5 @@ hu.bankmonitor.starter.microservice.common.CommonConfiguration,\
 hu.bankmonitor.starter.microservice.common.ErroHandlingAutoConfiguration,\
 hu.bankmonitor.starter.microservice.common.actuator.ActuatorConfiguration,\
 hu.bankmonitor.starter.microservice.common.log.SentryConfig,\
-hu.bankmonitor.starter.microservice.common.log.PaperTrailConfig
+hu.bankmonitor.starter.microservice.common.log.PaperTrailConfig,\
+hu.bankmonitor.starter.microservice.common.web.WebConfiguration
