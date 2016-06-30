@@ -58,7 +58,7 @@
 		<commons-io.version>2.5</commons-io.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<commons-math3.version>3.6.1</commons-math3.version>
-		<libphonenumber.version>7.4.2</libphonenumber.version>
+		<libphonenumber.version>7.4.3</libphonenumber.version>
 		<log4jdbc-log4j2.version>1.16</log4jdbc-log4j2.version>
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<lombok.version>1.16.8</lombok.version>
@@ -67,7 +67,7 @@
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
 		<spring-cloud-dependencies.version>Brixton.SR1</spring-cloud-dependencies.version>
 		<spring-integration-java-dsl.version>1.1.2.RELEASE</spring-integration-java-dsl.version>
-		<spring-session.version>1.2.0.RELEASE</spring-session.version>
+		<spring-session.version>1.2.1.RELEASE</spring-session.version>
 		<super-csv.version>2.4.0</super-csv.version>
 		<swagger.version>2.5.0</swagger.version>
 		<user-agent-utils.version>1.20</user-agent-utils.version>
