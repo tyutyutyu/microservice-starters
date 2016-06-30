@@ -49,7 +49,7 @@ public class SentryConfig {
 			sentryAppender.setRelease(sentryProperties.getRelease());
 
 			ThresholdFilter thresholdFilter = new ThresholdFilter();
-			thresholdFilter.setLevel("ERROR");
+			thresholdFilter.setLevel(sentryProperties.getLogLevel());
 			thresholdFilter.start();
 			sentryAppender.addFilter(thresholdFilter);
 

@@ -24,4 +24,9 @@ public class SentryProperties {
 	 */
 	private String release;
 
+	/**
+	 * @see ch.qos.logback.classic.filter.ThresholdFilter
+	 */
+	private String logLevel = "ERROR";
+
 }

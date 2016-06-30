@@ -3,6 +3,8 @@ package hu.bankmonitor.starter.microservice.common.web;
 import com.google.common.base.MoreObjects;
 import java.util.List;
 import java.util.Map;
+import javax.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +15,17 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
+@Slf4j
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Autowired(required = false)
 	private CorsMappingProperties properties;
+
+	@PostConstruct
+	public void init() {
+
+		log.debug("init - corsMappings: {}", properties);
+	}
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
