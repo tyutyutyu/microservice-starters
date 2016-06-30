@@ -23,7 +23,7 @@ public class MessageService {
 	 */
 	public void send(AbstractEvent event) {
 
-		send(event, event.getId());
+		send(event, event.getEventId());
 	}
 
 	/**

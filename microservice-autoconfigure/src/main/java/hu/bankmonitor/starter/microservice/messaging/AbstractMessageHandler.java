@@ -21,7 +21,7 @@ public abstract class AbstractMessageHandler {
 	@RabbitListener(queues = "${application.messaging.queueName}")
 	public final void handleMessageRouter(@Payload AbstractEvent event) {
 
-		log.debug("handleMessageRouter - {} received with {} ID. [{}]", event.getClass().getSimpleName(), event.getId(), event);
+		log.debug("handleMessageRouter - {} received with {} ID. [{}]", event.getClass().getSimpleName(), event.getEventId(), event);
 
 		try {
 			this.getClass().getMethod("handleMessage", event.getClass()).invoke(this, event);

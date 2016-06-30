@@ -1,5 +1,6 @@
 package hu.bankmonitor.starter.microservice.messaging;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.UUID;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,15 +13,16 @@ import lombok.ToString;
  *
  */
 @Getter
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "eventId")
 @ToString
 public abstract class AbstractEvent {
 
-	private String id;
+	@JsonProperty("id")
+	private String eventId;
 
 	public AbstractEvent() {
 
-		id = UUID.randomUUID().toString();
+		eventId = UUID.randomUUID().toString();
 	}
 
 }
