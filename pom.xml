@@ -50,7 +50,7 @@
 		<microservice-starters.version>7.1.1-SNAPSHOT</microservice-starters.version>
 		<logback-appenders.version>0.0.8</logback-appenders.version>
 
-		<assertj.version>3.5.1</assertj.version>
+		<assertj.version>3.5.2</assertj.version>
 		<commons-beanutils.version>1.9.2</commons-beanutils.version>
 		<commons-collections4.version>4.1</commons-collections4.version>
 		<commons-email.version>1.4</commons-email.version>
@@ -58,14 +58,14 @@
 		<commons-io.version>2.5</commons-io.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<commons-math3.version>3.6.1</commons-math3.version>
-		<libphonenumber.version>7.4.4</libphonenumber.version>
+		<libphonenumber.version>7.4.5</libphonenumber.version>
 		<log4jdbc-log4j2.version>1.16</log4jdbc-log4j2.version>
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
-		<lombok.version>1.16.8</lombok.version>
+		<lombok.version>1.16.10</lombok.version>
 		<poi.version>3.14</poi.version>
-		<raven-logback.version>7.3.0</raven-logback.version>
+		<raven-logback.version>7.4.0</raven-logback.version>
 		<recaptcha4j.version>0.0.7</recaptcha4j.version>
-		<spring-cloud-dependencies.version>Brixton.SR2</spring-cloud-dependencies.version>
+		<spring-cloud-dependencies.version>Brixton.SR3</spring-cloud-dependencies.version>
 		<spring-integration-java-dsl.version>1.1.2.RELEASE</spring-integration-java-dsl.version>
 		<spring-session.version>1.2.1.RELEASE</spring-session.version>
 		<super-csv.version>2.4.0</super-csv.version>
