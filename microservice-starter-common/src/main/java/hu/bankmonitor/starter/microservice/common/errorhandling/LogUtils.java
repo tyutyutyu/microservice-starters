@@ -67,7 +67,11 @@ public final class LogUtils {
 		}
 
 		MDC.put(EXCEPTION_CONTEXT_TYPE_KEY, exceptionContext.getType().toString());
-		MDC.put(EXCEPTION_CONTEXT_DATA_KEY, exceptionContext.getData().toString());
+		if (exceptionContext.getData() != null) {
+			MDC.put(EXCEPTION_CONTEXT_DATA_KEY, exceptionContext.getData().toString());
+		} else {
+			MDC.put(EXCEPTION_CONTEXT_DATA_KEY, "NO_DATA");
+		}
 
 		if (callerIsRobot) {
 			exceptionLogger.trace(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
