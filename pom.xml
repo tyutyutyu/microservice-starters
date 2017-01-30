@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<version>1.4.4.RELEASE</version>
+		<relativePath />
 	</parent>
 
 	<groupId>hu.bankmonitor.commons</groupId>
@@ -45,12 +45,12 @@
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 		<sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
-		<spring-boot-maven-plugin.version>1.4.3.RELEASE</spring-boot-maven-plugin.version>
+		<spring-boot-maven-plugin.version>1.4.4.RELEASE</spring-boot-maven-plugin.version>
 
 		<microservice-starters.version>10.1.1-SNAPSHOT</microservice-starters.version>
 		<logback-appenders.version>0.0.8</logback-appenders.version>
 
-		<assertj.version>3.6.1</assertj.version>
+		<assertj.version>3.6.2</assertj.version>
 		<commons-beanutils.version>1.9.3</commons-beanutils.version>
 		<commons-collections4.version>4.1</commons-collections4.version>
 		<commons-email.version>1.4</commons-email.version>
@@ -59,7 +59,7 @@
 		<commons-lang3.version>3.5</commons-lang3.version>
 		<commons-math3.version>3.6.1</commons-math3.version>
 		<junit-dataprovider.version>1.12.0</junit-dataprovider.version>
-		<libphonenumber.version>8.0.0</libphonenumber.version>
+		<libphonenumber.version>8.1.0</libphonenumber.version>
 		<log4jdbc-log4j2.version>1.16</log4jdbc-log4j2.version>
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<lombok.version>1.16.12</lombok.version>
