@@ -1,7 +1,5 @@
 package hu.bankmonitor.starter.microservice.common.errorhandling;
 
-import eu.bitwalker.useragentutils.BrowserType;
-import eu.bitwalker.useragentutils.UserAgent;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
@@ -60,12 +58,6 @@ public final class LogUtils {
 
 		Logger exceptionLogger = LoggerFactory.getLogger(exceptionContext.getType().toString());
 
-		boolean callerIsRobot = false;
-		if (exceptionContext.getRequest() != null
-				&& UserAgent.parseUserAgentString(exceptionContext.getRequest().getHeader("User-Agent")).getBrowser().getBrowserType() == BrowserType.ROBOT) {
-			callerIsRobot = true;
-		}
-
 		MDC.put(EXCEPTION_CONTEXT_TYPE_KEY, exceptionContext.getType().toString());
 		if (exceptionContext.getData() != null) {
 			MDC.put(EXCEPTION_CONTEXT_DATA_KEY, exceptionContext.getData().toString());
@@ -73,11 +65,7 @@ public final class LogUtils {
 			MDC.put(EXCEPTION_CONTEXT_DATA_KEY, "NO_DATA");
 		}
 
-		if (callerIsRobot) {
-			exceptionLogger.trace(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
-		} else {
-			exceptionLogger.error(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
-		}
+		exceptionLogger.error(LOG_MESSAGE, exceptionContext.getType().toString(), log(exceptionContext), log(exceptionContext.getRequest()), exception);
 
 		MDC.remove(EXCEPTION_CONTEXT_TYPE_KEY);
 		MDC.remove(EXCEPTION_CONTEXT_DATA_KEY);
