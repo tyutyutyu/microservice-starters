@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.5.RELEASE</version>
+		<version>1.5.2.RELEASE</version>
 		<relativePath />
 	</parent>
 
@@ -36,13 +36,8 @@
 
 	<properties>
 		<jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
-		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
-		<maven-install-plugin.version>2.3.1</maven-install-plugin.version>
-		<maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
 		<maven-jaxb2-plugin.version>0.13.1</maven-jaxb2-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 		<sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
 
 		<microservice-starters.version>12.0.1-SNAPSHOT</microservice-starters.version>
@@ -237,46 +232,6 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${maven-surefire-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>test</id>
-							<goals>
-								<goal>test</goal>
-							</goals>
-							<phase>test</phase>
-							<configuration>
-								<excludes>
-									<exclude>**/Abstract*.java</exclude>
-									<exclude>**/*IT.java</exclude>
-								</excludes>
-								<includes>
-									<include>**/*Test.java</include>
-								</includes>
-							</configuration>
-						</execution>
-						<execution>
-							<id>integration-test</id>
-							<goals>
-								<goal>test</goal>
-							</goals>
-							<phase>integration-test</phase>
-							<configuration>
-								<excludes>
-									<exclude>**/Abstract*.java</exclude>
-									<exclude>**/*Test.java</exclude>
-								</excludes>
-								<includes>
-									<include>**/*IT.java</include>
-								</includes>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
