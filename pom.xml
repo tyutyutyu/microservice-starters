@@ -50,10 +50,10 @@
 		<commons-lang3.version>3.5</commons-lang3.version>
 		<commons-math3.version>3.6.1</commons-math3.version>
 		<junit-dataprovider.version>1.12.0</junit-dataprovider.version>
-		<libphonenumber.version>8.3.2</libphonenumber.version>
+		<libphonenumber.version>8.4.0</libphonenumber.version>
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<poi.version>3.15</poi.version>
-		<raven-logback.version>7.8.3</raven-logback.version>
+		<raven-logback.version>7.8.6</raven-logback.version>
 		<spring-cloud-dependencies.version>Camden.SR4</spring-cloud-dependencies.version>
 		<super-csv.version>2.4.0</super-csv.version>
 		<swagger.version>2.6.1</swagger.version>

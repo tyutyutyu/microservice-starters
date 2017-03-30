@@ -24,7 +24,7 @@
 			<groupId>hu.bankmonitor.commons</groupId>
 			<artifactId>microservice-starter-common</artifactId>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
