@@ -39,7 +39,7 @@
 			<artifactId>guava</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.papertrailapp</groupId>
+			<groupId>com.tyutyutyu</groupId>
 			<artifactId>logback-syslog4j</artifactId>
 		</dependency>
 		<dependency>

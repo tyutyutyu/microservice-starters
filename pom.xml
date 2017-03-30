@@ -81,8 +81,13 @@
 
 		<repository>
 			<id>bintray-bankmonitor-hu.bankmonitor.commons</id>
-			<name>bintray</name>
+			<name>bintray-hu.bankmonitor</name>
 			<url>http://dl.bintray.com/bankmonitor/hu.bankmonitor.commons</url>
+		</repository>
+		<repository>
+			<id>bintray-tyutyutyu-com.tyutyutyu.papertrail</id>
+			<name>bintray-com.tyutyutyu</name>
+			<url>http://dl.bintray.com/tyutyutyu/com.tyutyutyu.papertrail</url>
 		</repository>
 	</repositories>
 
@@ -136,7 +141,7 @@
 				<version>${raven-logback.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.papertrailapp</groupId>
+				<groupId>com.tyutyutyu</groupId>
 				<artifactId>logback-syslog4j</artifactId>
 				<version>${logback-syslog4j.version}</version>
 			</dependency>

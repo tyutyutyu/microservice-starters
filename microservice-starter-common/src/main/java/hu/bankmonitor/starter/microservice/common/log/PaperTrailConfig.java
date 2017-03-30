@@ -4,9 +4,11 @@ import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.PatternLayout;
 import ch.qos.logback.classic.spi.ILoggingEvent;
-import com.papertrailapp.logback.Syslog4jAppender;
+import com.tyutyutyu.logback.Syslog4jAppender;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.graylog2.syslog4j.impl.net.tcp.ssl.SSLTCPNetSyslogConfig;
+import org.graylog2.syslog4j.util.SyslogUtility;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -16,6 +18,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Slf4j
 public class PaperTrailConfig {
+
+	private static final String CUSTOM_LOCAL_NAME_KEY = "CUSTOM_LOCAL_NAME";
 
 	@Autowired(required = false)
 	private PaperTrailProperties paperTrailProperties;
@@ -27,7 +31,7 @@ public class PaperTrailConfig {
 	void init() {
 
 		if (paperTrailProperties != null) {
-			log.info("Init Paper Trail appender with Ident: {}, Local name: {}", paperTrailProperties().getIdent(), BankmonitorSyslogMessageProcessor.getLocalName());
+			log.info("Init Paper Trail appender with Ident: {}, Local name: {}", paperTrailProperties().getIdent());
 
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 
@@ -40,10 +44,11 @@ public class PaperTrailConfig {
 			layout.start();
 			syslog4jAppender.setLayout(layout);
 
-			BankmonitorSSLTCPNetSyslogConfig syslogConfig = new BankmonitorSSLTCPNetSyslogConfig();
+			SSLTCPNetSyslogConfig syslogConfig = new SSLTCPNetSyslogConfig();
 			syslogConfig.setHost(paperTrailProperties.getHost());
 			syslogConfig.setPort(paperTrailProperties.getPort());
 			syslogConfig.setIdent(paperTrailProperties.getIdent());
+			syslogConfig.setLocalName(System.getProperty(CUSTOM_LOCAL_NAME_KEY, SyslogUtility.getLocalName()));
 			syslogConfig.setMaxMessageLength(paperTrailProperties.getMaxMessageLength());
 			syslog4jAppender.setSyslogConfig(syslogConfig);
 
