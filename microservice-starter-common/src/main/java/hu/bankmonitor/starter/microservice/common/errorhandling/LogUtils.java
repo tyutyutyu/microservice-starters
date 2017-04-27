@@ -92,6 +92,7 @@ public final class LogUtils {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("URI        :").append(request.getRequestURI()).append(EOL);
+		sb.append("Method     :").append(request.getMethod()).append(EOL);
 		for (Object n : Collections.list(request.getHeaderNames())) {
 			sb.append("Header     :").append(n).append("=").append(request.getHeader(n.toString())).append(EOL);
 		}
