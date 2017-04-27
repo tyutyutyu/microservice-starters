@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.2.RELEASE</version>
+		<version>1.5.3.RELEASE</version>
 		<relativePath />
 	</parent>
 
@@ -50,7 +50,7 @@
 		<commons-lang3.version>3.5</commons-lang3.version>
 		<commons-math3.version>3.6.1</commons-math3.version>
 		<junit-dataprovider.version>1.12.0</junit-dataprovider.version>
-		<libphonenumber.version>8.4.1</libphonenumber.version>
+		<libphonenumber.version>8.4.2</libphonenumber.version>
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<poi.version>3.16</poi.version>
 		<raven-logback.version>8.0.2</raven-logback.version>
