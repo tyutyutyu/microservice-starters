@@ -10,19 +10,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class SentryProperties {
 
 	/**
-	 * @see com.getsentry.raven.logback.SentryAppender
+	 * @see io.sentry.Sentry
 	 */
 	private String dsn;
 
 	/**
-	 * @see com.getsentry.raven.logback.SentryAppender
+	 * @see io.sentry.Sentry
 	 */
 	private String dsnPublic;
-
-	/**
-	 * @see com.getsentry.raven.logback.SentryAppender
-	 */
-	private String release;
 
 	/**
 	 * @see ch.qos.logback.classic.filter.ThresholdFilter

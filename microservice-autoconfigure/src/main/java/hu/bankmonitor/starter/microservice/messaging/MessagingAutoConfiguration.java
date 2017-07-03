@@ -122,10 +122,9 @@ public class MessagingAutoConfiguration {
 	@Bean
 	MessageConverter messageConverter() {
 
-		Jackson2JsonMessageConverter messageConverter = new Jackson2JsonMessageConverter();
 		ObjectMapper jsonObjectMapper = new ObjectMapper();
 		jsonObjectMapper.registerModule(new JodaModule());
-		messageConverter.setJsonObjectMapper(jsonObjectMapper);
+		Jackson2JsonMessageConverter messageConverter = new Jackson2JsonMessageConverter(jsonObjectMapper);
 
 		return messageConverter;
 	}

@@ -3,8 +3,9 @@ package hu.bankmonitor.starter.microservice.common.log;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.filter.ThresholdFilter;
-import com.getsentry.raven.logback.SentryAppender;
-import com.getsentry.raven.servlet.RavenServletContainerInitializer;
+import io.sentry.Sentry;
+import io.sentry.logback.SentryAppender;
+import io.sentry.servlet.SentryServletContainerInitializer;
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -39,14 +40,13 @@ public class SentryConfig {
 
 			log.info("Init Sentry appender with dsn: {}", sentryProperties.getDsn());
 
+			Sentry.init(sentryProperties.getDsn());
+
 			LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 
 			SentryAppender sentryAppender = new SentryAppender();
 			sentryAppender.setName("SENTRY_APPENDER");
 			sentryAppender.setContext(loggerContext);
-
-			sentryAppender.setDsn(sentryProperties.getDsn());
-			sentryAppender.setRelease(sentryProperties.getRelease());
 
 			ThresholdFilter thresholdFilter = new ThresholdFilter();
 			thresholdFilter.setLevel(sentryProperties.getLogLevel());
@@ -87,12 +87,12 @@ public class SentryConfig {
 
 		return new ServletContextInitializer() {
 
-			private RavenServletContainerInitializer ravenServletContainerInitializer = new RavenServletContainerInitializer();
+			private SentryServletContainerInitializer sentryServletContainerInitializer = new SentryServletContainerInitializer();
 
 			@Override
 			public void onStartup(ServletContext servletContext) throws ServletException {
 
-				ravenServletContainerInitializer.onStartup(null, servletContext);
+				sentryServletContainerInitializer.onStartup(null, servletContext);
 			}
 		};
 	}
