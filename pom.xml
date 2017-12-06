@@ -63,7 +63,6 @@
 	<modules>
 		<module>microservice-starter-common</module>
 		<module>microservice-autoconfigure</module>
-		<module>microservice-starter-messaging</module>
 	</modules>
 
 	<repositories>
@@ -112,11 +111,6 @@
 			<dependency>
 				<groupId>hu.bankmonitor.commons</groupId>
 				<artifactId>microservice-autoconfigure</artifactId>
-				<version>${microservice-starters.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>hu.bankmonitor.commons</groupId>
-				<artifactId>microservice-starter-messaging</artifactId>
 				<version>${microservice-starters.version}</version>
 			</dependency>
 

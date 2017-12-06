@@ -1,2 +1,0 @@
-# Microservices Starter Messaging
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=hu.bankmonitor.starter.microservice.messaging.MessagingAutoConfiguration
