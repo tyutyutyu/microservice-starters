@@ -54,7 +54,7 @@
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<poi.version>3.17</poi.version>
 		<sentry-logback.version>1.6.3</sentry-logback.version>
-		<spring-cloud-dependencies.version>Edgware.RELEASE</spring-cloud-dependencies.version>
+		<spring-cloud-dependencies.version>Dalston.SR4</spring-cloud-dependencies.version>
 		<super-csv.version>2.4.0</super-csv.version>
 		<swagger.version>2.6.1</swagger.version>
 		<usertype.version>6.0.1.GA</usertype.version>
