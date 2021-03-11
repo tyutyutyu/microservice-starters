@@ -34,7 +34,7 @@
 		<jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
 		<maven-jaxb2-plugin.version>0.13.3</maven-jaxb2-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-		<sonar-maven-plugin.version>3.4.0.905</sonar-maven-plugin.version>
+		<sonar-maven-plugin.version>3.8.0.2131</sonar-maven-plugin.version>
 
 		<microservice-starters.version>18.1.2-SNAPSHOT</microservice-starters.version>
 		<logback-appenders.version>0.0.8</logback-appenders.version>
