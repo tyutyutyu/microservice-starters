@@ -31,7 +31,7 @@
 	</distributionManagement>
 
 	<properties>
-		<jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
 		<maven-jaxb2-plugin.version>0.14.0</maven-jaxb2-plugin.version>
 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
 		<sonar-maven-plugin.version>3.8.0.2131</sonar-maven-plugin.version>
