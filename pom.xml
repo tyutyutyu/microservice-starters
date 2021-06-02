@@ -49,7 +49,7 @@
 		<libphonenumber.version>8.12.24</libphonenumber.version>
 		<logback-syslog4j.version>1.0.0</logback-syslog4j.version>
 		<poi.version>5.0.0</poi.version>
-		<sentry-logback.version>4.3.0</sentry-logback.version>
+		<sentry-logback.version>5.0.0</sentry-logback.version>
 		<spring-cloud-dependencies.version>2020.0.3</spring-cloud-dependencies.version>
 		<super-csv.version>2.4.0</super-csv.version>
 		<swagger.version>3.0.0</swagger.version>
